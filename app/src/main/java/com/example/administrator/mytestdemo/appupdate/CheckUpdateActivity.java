@@ -1,10 +1,12 @@
-package com.example.administrator.mytestdemo;
+package com.example.administrator.mytestdemo.appupdate;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 
-import com.example.administrator.mytestdemo.appupdate.UpdateManager;
+import com.example.administrator.mytestdemo.BaseActivity;
+import com.example.administrator.mytestdemo.R;
 
 public class CheckUpdateActivity extends BaseActivity {
     @Override
@@ -14,7 +16,8 @@ public class CheckUpdateActivity extends BaseActivity {
         findViewById(R.id.bt_check).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateManager.getInstance().checkUpdate();
+//                UpdateManager.getInstance().checkUpdate();
+                startActivity(new Intent(CheckUpdateActivity.this, UpdateActivity.class));
             }
         });
 
@@ -22,7 +25,7 @@ public class CheckUpdateActivity extends BaseActivity {
         findViewById(R.id.bt_stop).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UpdateManager.getInstance().stopDownloadService();
+
             }
         });
     }

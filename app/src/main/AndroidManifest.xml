@@ -48,9 +48,14 @@
             android:name=".LeakTestActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".CheckUpdateActivity"
+            android:name=".appupdate.CheckUpdateActivity"
             android:screenOrientation="portrait" />
-        <service android:name=".appupdate.DownloadService"/>
+
+        <service android:name=".appupdate.DownloadService" />
+        <activity
+            android:name=".appupdate.UpdateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeTransparent" />
     </application>
 
 </manifest>

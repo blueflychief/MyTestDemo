@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
+import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.util.MLog;
