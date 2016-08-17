@@ -1,6 +1,5 @@
 package com.example.administrator.mytestdemo.appupdate;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -16,8 +15,8 @@ public class CheckUpdateActivity extends BaseActivity {
         findViewById(R.id.bt_check).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                UpdateManager.getInstance().checkUpdate();
-                startActivity(new Intent(CheckUpdateActivity.this, UpdateActivity.class));
+                UpdateManager.getInstance().checkUpdate();
+//                startActivity(new Intent(CheckUpdateActivity.this, UpdateActivity.class));
             }
         });
 
