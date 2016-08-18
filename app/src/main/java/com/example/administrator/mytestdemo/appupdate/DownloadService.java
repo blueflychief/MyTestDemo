@@ -29,6 +29,7 @@ public class DownloadService extends IntentService {
     private boolean isDownload = false;
     public static final int RESULT_START = 1;       //开始下载
     public static final int RESULT_FAILED = -1;     //下载失败
+    public static final int RESULT_SOURSE_BAD = -2;     //源文件错误
     public static final int RESULT_CANCEL = 0;      //下载取消
     public static final int RESULT_DOWNLOADING = 50;  //正在下载
     public static final int RESULT_PAUSE = 80;      //暂停下载
@@ -50,7 +51,7 @@ public class DownloadService extends IntentService {
         String fileName = intent.getStringExtra("file_name");
         String downloadUrl = intent.getStringExtra("download_url");
         if (command.equals("download")) {
-            isDownload = true;
+
             try {
 //                downLoadFile(downloadUrl, fileName, canContinue, receiver);
                 downLoad(downloadUrl, fileName, canContinue, receiver);
@@ -143,7 +144,9 @@ public class DownloadService extends IntentService {
 
 
     private File downLoad(String downloadUrl, String fileName, boolean canContinue, ResultReceiver receiver) {
-        if (TextUtils.isEmpty(downloadUrl)) throw new IllegalArgumentException();
+        if (TextUtils.isEmpty(downloadUrl)) {
+            throw new IllegalArgumentException();
+        }
         File file = new File(mDownloadPath);
         if (!file.exists()) {
             file.mkdirs();
@@ -152,21 +155,32 @@ public class DownloadService extends IntentService {
         InputStream inputStream = null;
         RandomAccessFile raf;
         HttpURLConnection connection = null;
-        Bundle bundle;
+        Bundle bundle = new Bundle();
         int currentTotal;
         int total = getDownloadFileLength(downloadUrl);
+        if (total <= 0) {
+            receiver.send(RESULT_SOURSE_BAD, Bundle.EMPTY);   //文件获取错误
+            return null;
+        }
+        isDownload = true;
+        bundle.putInt("total", total);
+        receiver.send(RESULT_START, bundle);   //开始下载
         try {
             int start = 0;
-            receiver.send(RESULT_START, Bundle.EMPTY);   //开始下载
             if (file.exists()) {
                 if (file.length() == total) {  //已完成，直接返回
-                    receiver.send(RESULT_OK, Bundle.EMPTY);
+                    KLog.i("----文件已下载，直接返回");
+                    bundle.putInt("currentTotal", total);
+                    receiver.send(RESULT_OK, bundle);
                     return file;
                 }
 
                 if (canContinue) {
                     if ((file.length() != 0) && (file.length() == (int) PreferencesUtils.get(fileName, 0))) {//继续下载
                         start = (int) PreferencesUtils.get(fileName, 0);
+                        KLog.i("----文件已经从上次断点开始下载");
+                        bundle.putInt("currentTotal", start);
+                        receiver.send(RESULT_DOWNLOADING, bundle);
                     } else {//从头开始下载
                         file.delete();
                         KLog.i("----文件记录损坏，已删除文件");
@@ -182,7 +196,7 @@ public class DownloadService extends IntentService {
             } else {
                 file.createNewFile();
             }
-            bundle = new Bundle();
+
             currentTotal = start;
 
             URL url = new URL(downloadUrl);
@@ -196,14 +210,19 @@ public class DownloadService extends IntentService {
             raf.seek(start);
             if (connection.getResponseCode() == HttpURLConnection.HTTP_PARTIAL) {
                 inputStream = connection.getInputStream();
-                byte buf[] = new byte[1024 << 2];
+                byte buf[] = new byte[4096];
                 int len = -1;
+                int count = 1;
                 while ((len = inputStream.read(buf)) != -1) {
                     raf.write(buf, 0, len);
                     currentTotal += len;
-                    PreferencesUtils.put(fileName, currentTotal);
-                    bundle.putInt("currentTotal", currentTotal);
-                    receiver.send(RESULT_DOWNLOADING, bundle);
+                    KLog.i("------while_currentTotal:" + currentTotal);
+                    if (currentTotal > (count * 1024 * 512 + start)) {
+                        PreferencesUtils.put(fileName, currentTotal);
+                        bundle.putInt("currentTotal", currentTotal);
+                        receiver.send(RESULT_DOWNLOADING, bundle);
+                        count++;
+                    }
                     if (!isDownload) {   //暂停下载
                         PreferencesUtils.put(fileName, currentTotal);
                         bundle.putInt("currentTotal", currentTotal);
@@ -215,11 +234,12 @@ public class DownloadService extends IntentService {
                 bundle.putInt("currentTotal", currentTotal);
                 receiver.send(RESULT_OK, bundle);
                 PreferencesUtils.remove(fileName);
-            } else if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){   //走这里说明不支持断点下载
+            } else if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {   //走这里说明不支持断点下载
                 KLog.i("----该链接不支持断点下载");
             }
 
         } catch (Exception e) {
+            isDownload = false;
             receiver.send(RESULT_FAILED, Bundle.EMPTY);
             e.printStackTrace();
         } finally {

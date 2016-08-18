@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.administrator.mytestdemo.BaseActivity;
 import com.example.administrator.mytestdemo.MyApplication;
@@ -80,6 +81,14 @@ public class UpdateActivity extends BaseActivity implements View.OnClickListener
     }
 
 
+    public static final int RESULT_START = 1;       //开始下载
+    public static final int RESULT_FAILED = -1;     //下载失败
+    public static final int RESULT_SOURSE_BAD = -2;     //源文件错误
+    public static final int RESULT_CANCEL = 0;      //下载取消
+    public static final int RESULT_DOWNLOADING = 50;  //正在下载
+    public static final int RESULT_PAUSE = 80;      //暂停下载
+    public static final int RESULT_OK = 100;        //下载完成
+
     private void startDownloadService(String url, String fileName, boolean canContinue) {
         if (TextUtils.isEmpty(fileName)) {
             int start = url.lastIndexOf("/");
@@ -93,33 +102,38 @@ public class UpdateActivity extends BaseActivity implements View.OnClickListener
             protected void onReceiveResult(int resultCode, Bundle resultData) {
                 super.onReceiveResult(resultCode, resultData);
                 switch (resultCode) {
-                    case 0:
+                    case DownloadService.RESULT_SOURSE_BAD:
+                        Log.i(TAG, "-----源文件大小错误");
+                        break;
+                    case DownloadService.RESULT_START:
                         total = resultData.getInt("total");
                         Log.i(TAG, "-----文件大小：" + total + ":开始下载");
                         break;
-                    case -1:
+                    case DownloadService.RESULT_FAILED:
                         Log.i(TAG, "-----下载出错");
                         break;
-                    case -2:
-                        Log.i(TAG, "-----获取文件出错");
+                    case DownloadService.RESULT_PAUSE:
+                        Log.i(TAG, "-----下载暂停");
                         break;
-                    case 50:
+                    case DownloadService.RESULT_DOWNLOADING:
                         Log.i(TAG, "-----正在下载currentTotal:" + resultData.getInt("currentTotal"));
                         pb_bar.setProgress(resultData.getInt("currentTotal") * 100 / total);
                         tv_progress.setText("文件大小：" + total + "当前下载大小：" + resultData.getInt("currentTotal"));
                         break;
-                    case 99:
+                    case DownloadService.RESULT_CANCEL:
                         Log.i(TAG, "-----下载取消");
                         break;
-                    case 100:
-                        Log.i(TAG, "-----下载完成，文件大小:" + resultData.getInt("complete"));
+                    case DownloadService.RESULT_OK:
+                        Log.i(TAG, "-----下载完成，文件大小:" + resultData.getInt("currentTotal"));
+                        Toast.makeText(UpdateActivity.this, "文件下载完成", Toast.LENGTH_SHORT).show();
+                        finish();
                         break;
                 }
             }
         });
         intent.putExtra("command", "download");
         intent.putExtra("file_name", fileName);
-        intent.putExtra("can_cantinue", canContinue);
+        intent.putExtra("can_continue", canContinue);
         intent.putExtra("download_url", url);
         MyApplication.getApplication().startService(intent);
 
@@ -135,7 +149,8 @@ public class UpdateActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.tv_update_now:
                 loadUpdatingView(mDownloadCancelable);
-                startDownloadService(mUpdateBean.fileurl, null, false);
+//                startDownloadService(mUpdateBean.fileurl, null, false);
+                startDownloadService(URL, "update1.apk", true);
                 break;
             case R.id.tv_update_later:
                 finish();

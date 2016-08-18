@@ -3,6 +3,7 @@ package com.example.administrator.mytestdemo;
 import android.app.Application;
 
 import com.example.administrator.mytestdemo.util.KLog;
+import com.example.administrator.mytestdemo.util.PreferencesUtils;
 import com.yolanda.nohttp.NoHttp;
 
 public class MyApplication extends Application {
@@ -13,6 +14,7 @@ public class MyApplication extends Application {
         super.onCreate();
         INSTANCE = this;
         KLog.init(true, "klog");
+        PreferencesUtils.init(this);
         NoHttp.initialize(this);
     }
 
