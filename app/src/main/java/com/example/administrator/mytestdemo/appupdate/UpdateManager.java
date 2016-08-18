@@ -17,7 +17,7 @@ import com.yolanda.nohttp.rest.Response;
 
 public class UpdateManager extends BaseActivity {
 
-    private static final String URL = "http://www.baidu.com";
+    private static final String URL = "http://test.kuaikuaikeji.com/kas/appcheck21?build=14805";
     private static final String TAG = "UpdateManager";
     private FragmentManager fragmentManager;
     private CustomDialog customDialog;

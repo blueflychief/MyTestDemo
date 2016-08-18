@@ -149,8 +149,8 @@ public class UpdateActivity extends BaseActivity implements View.OnClickListener
         switch (v.getId()) {
             case R.id.tv_update_now:
                 loadUpdatingView(mDownloadCancelable);
-//                startDownloadService(mUpdateBean.fileurl, null, false);
-                startDownloadService(URL, "update1.apk", true);
+                startDownloadService(mUpdateBean.fileurl, null, false);
+//                startDownloadService(URL, "update1.apk", true);
                 break;
             case R.id.tv_update_later:
                 finish();
