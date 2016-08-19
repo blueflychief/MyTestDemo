@@ -14,6 +14,7 @@ import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.util.MLog;
+import com.example.administrator.mytestdemo.util.NetworkUtils;
 
 import java.io.File;
 
@@ -66,6 +67,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_leak:
                 startActivity(new Intent(this, LeakTestActivity.class));
+                NetworkUtils.directHttp("http://test.kuaikuaikeji.com/kas/appcheck21?build=14802");
                 break;
             case R.id.bt_update:
                 startActivity(new Intent(this, CheckUpdateActivity.class));

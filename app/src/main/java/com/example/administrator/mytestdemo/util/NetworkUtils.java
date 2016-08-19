@@ -8,6 +8,13 @@ import android.net.wifi.WifiManager;
 
 import com.example.administrator.mytestdemo.MyApplication;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
 /**
  * Created by Administrator on 2015/11/4.
  */
@@ -105,7 +112,7 @@ public class NetworkUtils {
         if (wifiStatus == WIFI_STATUS_DISABLE
                 || wifiStatus == WIFI_STATUS_ENABLE) {
             ConnectivityManager conManager = (ConnectivityManager) MyApplication.getApplication().getSystemService(
-                            Context.CONNECTIVITY_SERVICE);
+                    Context.CONNECTIVITY_SERVICE);
             NetworkInfo ni = conManager.getActiveNetworkInfo();
             if (ni != null) {
                 String apn = ni.getExtraInfo();
@@ -132,5 +139,68 @@ public class NetworkUtils {
 
     public static boolean isValidMobPhone(String phone) {
         return phone.matches(REGX_PHONE);
+    }
+
+
+    public static String directHttp(final String webUrl) {
+        new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                doHttpGetRequest(webUrl);
+            }
+        }.start();
+        return null;
+    }
+
+    public static String doHttpGetRequest(String webUrl) {
+        HttpURLConnection connection = null;
+        URL url;
+        InputStream inputStream = null;
+        InputStreamReader inputStreamReader = null;
+        BufferedReader reader = null;
+        String tempLine;
+        StringBuffer resultBuffer;
+        try {
+            url = new URL(webUrl);
+            connection = (HttpURLConnection) url.openConnection();
+            connection.setConnectTimeout(10 * 1000);
+            connection.setReadTimeout(10 * 1000);
+            connection.setRequestMethod("GET");
+            connection.connect();
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                inputStream = connection.getInputStream();
+                inputStreamReader = new InputStreamReader(inputStream);
+                resultBuffer = new StringBuffer();
+                reader = new BufferedReader(inputStreamReader);
+                while ((tempLine = reader.readLine()) != null) {
+                    resultBuffer.append(tempLine);
+                }
+                KLog.i("------返回结果：" + resultBuffer.toString());
+                return resultBuffer.toString();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+                if (inputStreamReader != null) {
+                    inputStreamReader.close();
+                }
+
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            if (connection != null) {
+                connection.disconnect();
+            }
+        }
+        return null;
     }
 }

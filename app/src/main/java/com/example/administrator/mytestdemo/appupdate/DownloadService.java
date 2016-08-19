@@ -310,4 +310,6 @@ public class DownloadService extends IntentService {
         super.onDestroy();
         Log.i(TAG, "-----DownloadService:onDestroy()");
     }
+
+
 }
