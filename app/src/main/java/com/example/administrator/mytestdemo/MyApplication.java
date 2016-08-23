@@ -22,4 +22,9 @@ public class MyApplication extends Application {
         return INSTANCE;
     }
 
+    @Override
+    public void onTerminate() {
+        super.onTerminate();
+        System.exit(0);
+    }
 }

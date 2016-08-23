@@ -5,16 +5,19 @@ import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
+import com.example.administrator.mytestdemo.appupdate.UpdateActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
+import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.util.MLog;
-import com.example.administrator.mytestdemo.util.NetworkUtils;
+import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 
 import java.io.File;
 
@@ -23,6 +26,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_compress;
     private Button bt_leak;
     private Button bt_update;
+    private Button bt_video_Record;
     private ImageView imageView;
 
 
@@ -36,10 +40,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         imageView = (ImageView) findViewById(R.id.iv);
         bt_leak = (Button) findViewById(R.id.bt_leak);
         bt_update = (Button) findViewById(R.id.bt_update);
+        bt_video_Record = (Button) findViewById(R.id.bt_video_Record);
         bt_alipay.setOnClickListener(this);
         bt_leak.setOnClickListener(this);
         bt_compress.setOnClickListener(this);
         bt_update.setOnClickListener(this);
+        bt_video_Record.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
 
@@ -67,10 +73,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_leak:
                 startActivity(new Intent(this, LeakTestActivity.class));
-                NetworkUtils.directHttp("http://test.kuaikuaikeji.com/kas/appcheck21?build=14802");
                 break;
             case R.id.bt_update:
                 startActivity(new Intent(this, CheckUpdateActivity.class));
+                break;
+            case R.id.bt_video_Record:
+                startActivity(new Intent(MainActivity.this, NewRecordVideoActivity.class));
                 break;
         }
     }
@@ -89,4 +97,21 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     }
 
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            KLog.i("------程序退出");
+//            Intent a = new Intent(Intent.ACTION_MAIN);
+//            a.addCategory(Intent.CATEGORY_HOME);
+//            a.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//            startActivity(a);
+//            System.exit(0);
+
+            Intent intent = new Intent();
+            intent.setClass(this, UpdateActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); //注意本行的FLAG设置
+            startActivity(intent);
+        }
+        return true;
+    }
 }

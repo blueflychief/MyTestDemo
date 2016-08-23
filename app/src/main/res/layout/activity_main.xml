@@ -37,6 +37,13 @@
         android:layout_below="@+id/bt_leak"
         android:text="APP升级演示" />
 
+    <Button
+        android:id="@+id/bt_video_Record"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_update"
+        android:text="微信小视频" />
+
     <ImageView
         android:id="@+id/iv"
         android:layout_width="300dp"
