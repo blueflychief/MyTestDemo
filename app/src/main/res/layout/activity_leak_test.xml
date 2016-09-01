@@ -38,12 +38,84 @@
 
             <com.example.administrator.mytestdemo.widge.DotIndicatorView
                 android:id="@+id/dv"
-                android:background="@color/colorAccent"
                 android:layout_width="wrap_content"
-                app:orientation="horizontal"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                app:orientation="horizontal" />
+
+            <com.example.administrator.mytestdemo.widge.TextViewExpandableAnimation
+                android:id="@+id/tv_expand_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:tvea_expandBitmap="@drawable/icon_green_arrow_down"
+                app:tvea_expandLines="3"
+                app:tvea_shrinkBitmap="@drawable/icon_green_arrow_up"
+                app:tvea_textContentColor="@color/color_gray_light_content_text"
+                app:tvea_textContentSize="@dimen/sp_txt_size_content"
+                app:tvea_textExpand="@string/expand"
+                app:tvea_textShrink="@string/shrink"
+                app:tvea_textStateColor="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="设立收到了反馈说多了"
+                android:textSize="18sp" />
+
 
         </LinearLayout>
+
+
     </ScrollView>
 
 

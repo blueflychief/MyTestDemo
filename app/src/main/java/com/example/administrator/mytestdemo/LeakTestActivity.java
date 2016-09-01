@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.widge.DotIndicatorView;
 import com.example.administrator.mytestdemo.widge.ExpandTextView;
+import com.example.administrator.mytestdemo.widge.TextViewExpandableAnimation;
 
 public class LeakTestActivity extends AppCompatActivity {
     private static Drawable sBackground;
@@ -18,6 +19,7 @@ public class LeakTestActivity extends AppCompatActivity {
     private boolean mExpanded = false;
     private DotIndicatorView mDotView;
     private int current = 1;
+    private TextViewExpandableAnimation mTextViewExpandableAnimation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,10 @@ public class LeakTestActivity extends AppCompatActivity {
                 mDotView.setCurrentDot(current > 4 ? current-- : current++);
             }
         });
+
+
+        mTextViewExpandableAnimation= (TextViewExpandableAnimation) findViewById(R.id.tv_expand_text);
+        mTextViewExpandableAnimation.setText(getString(R.string.tips));
     }
 
     @Override

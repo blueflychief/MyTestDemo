@@ -1,13 +1,20 @@
 package com.example.administrator.mytestdemo.appupdate;
 
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.RemoteViews;
 
+import com.example.administrator.mytestdemo.MyApplication;
+import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.util.PreferencesUtils;
 
@@ -33,6 +40,7 @@ public class DownloadService extends IntentService {
     public static final int RESULT_DOWNLOADING = 50;  //正在下载
     public static final int RESULT_PAUSE = 80;      //暂停下载
     public static final int RESULT_OK = 100;        //下载完成
+    private boolean canNotify = false;
 
     public DownloadService() {
         super("DownloadService");
@@ -42,23 +50,107 @@ public class DownloadService extends IntentService {
         super(name);
     }
 
+
+    /**
+     * 开始下载
+     *
+     * @param url
+     * @param fileName
+     * @param receiver
+     * @param canContinue
+     */
+    public static void startDownloadService(String url, String fileName, ResultReceiver receiver, boolean canContinue) {
+        if (TextUtils.isEmpty(fileName)) {
+            int start = url.lastIndexOf("/");
+            fileName = url.substring(start);
+            KLog.i("---fileName:" + fileName);
+        }
+        Intent intent = new Intent(MyApplication.getApplication(), DownloadService.class);
+        intent.putExtra("receiver", receiver);
+        intent.putExtra("command", "download");
+        intent.putExtra("file_name", fileName);
+        intent.putExtra("can_continue", canContinue);
+        intent.putExtra("download_url", url);
+        MyApplication.getApplication().startService(intent);
+    }
+
+    /**
+     * 暂停下载
+     */
+    public static void pauseDownloadService() {
+        Intent intent = new Intent(MyApplication.getApplication(), DownloadService.class);
+        intent.putExtra("command", "pause");
+        MyApplication.getApplication().startService(intent);
+    }
+
+    /**
+     * 取消下载
+     */
+    public static void cancelDownloadService() {
+        Intent intent = new Intent(MyApplication.getApplication(), DownloadService.class);
+        intent.putExtra("command", "cancel");
+        MyApplication.getApplication().startService(intent);
+    }
+
+    /**
+     * 显示通知
+     */
+    public static void showNotification() {
+        Intent intent = new Intent(MyApplication.getApplication(), DownloadService.class);
+        intent.putExtra("command", "notify");
+        MyApplication.getApplication().startService(intent);
+    }
+
+    /**
+     * 关闭下载
+     */
+    public static void stopDownloadService() {
+        Intent intent = new Intent(MyApplication.getApplication(), DownloadService.class);
+        MyApplication.getApplication().stopService(intent);
+    }
+
     @Override
     protected void onHandleIntent(Intent intent) {
         final ResultReceiver receiver = intent.getParcelableExtra("receiver");
-        String command = intent.getStringExtra("command");
         boolean canContinue = intent.getBooleanExtra("can_continue", false);
         String fileName = intent.getStringExtra("file_name");
         String downloadUrl = intent.getStringExtra("download_url");
-        if (command.equals("download")) {
-
-            try {
+        try {
+            if (intent.getStringExtra("command").equals("download")) {
+                createNotification(getApplicationContext());
 //                downLoadFile(downloadUrl, fileName, canContinue, receiver);
                 downLoad(downloadUrl, fileName, canContinue, receiver);
-            } catch (Exception e) {
-                receiver.send(RESULT_FAILED, Bundle.EMPTY);
             }
+        } catch (Exception e) {
+            receiver.send(RESULT_FAILED, Bundle.EMPTY);
         }
         this.stopSelf();
+    }
+
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        String command = intent.getStringExtra("command");
+        KLog.i("----command:" + command);
+        if (!TextUtils.isEmpty(command)) {
+            switch (command) {
+                case "download":
+                    break;
+                case "pause":
+                    isDownload = false;
+                    break;
+                case "cancel":
+                    isDownload = false;
+                    break;
+                case "notify":
+                    canNotify = true;
+                    break;
+                default:
+                    break;
+
+            }
+        }
+        return super.onStartCommand(intent, flags, startId);
     }
 
     private File downLoad(String downloadUrl, String fileName, boolean canContinue, ResultReceiver receiver) {
@@ -161,12 +253,14 @@ public class DownloadService extends IntentService {
                         bundle.putInt("currentTotal", currentTotal);
                         receiver.send(RESULT_DOWNLOADING, bundle);
                         count++;
+                        notify((int) (currentTotal * 100.0f / total));
                     }
 
                 }
                 isDownload = false;   //下载完成
                 bundle.putInt("currentTotal", currentTotal);
                 receiver.send(RESULT_OK, bundle);
+                notify(100);
                 if (HttpURLConnection.HTTP_PARTIAL == responseCode) {
                     PreferencesUtils.remove(fileName);
                 }
@@ -190,6 +284,31 @@ public class DownloadService extends IntentService {
         return file;
     }
 
+    private void notify(int currentProgress) {
+        if (!canNotify) {
+            return;
+        }
+        if (currentProgress == 100) {
+            mNotificationManager.cancelAll();
+            return;
+        }
+        mNotification.contentView.setTextViewText(R.id.tv_title, "正在下载：" + String.valueOf(currentProgress) + "%");
+        mNotification.contentView.setProgressBar(R.id.pb_progress, 100, currentProgress, false);
+        mNotificationManager.notify(0, mNotification);
+    }
+
+    private NotificationManager mNotificationManager;
+    private Notification mNotification;
+
+    public void createNotification(Context context) {
+        mNotificationManager = (NotificationManager) context.getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        mNotification = new Notification(R.mipmap.ic_launcher, "下载", System
+                .currentTimeMillis());
+        RemoteViews view = new RemoteViews(context.getApplicationContext().getPackageName(), R.layout.view_notify_progress);
+        mNotification.contentView = view;
+        PendingIntent contentIntent = PendingIntent.getActivity(context, R.string.app_name, new Intent(), PendingIntent.FLAG_UPDATE_CURRENT);
+        mNotification.contentIntent = contentIntent;
+    }
 
     private File downLoadFile(String downloadUrl, String fileName, boolean canContinue, ResultReceiver receiver) {
         if (TextUtils.isEmpty(downloadUrl)) throw new IllegalArgumentException();

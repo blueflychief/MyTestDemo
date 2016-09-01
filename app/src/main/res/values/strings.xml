@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">MyTestDemo</string>
+
+    <string name="expand">expand</string>
+
+    <string name="shrink">shrink</string>
+
+    <string name="tips">This is a custom TextView that can be expanded with a smooth transition animation,
+        you can set the number of lines to expand,</string>
 </resources>
