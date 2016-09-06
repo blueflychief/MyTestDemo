@@ -131,8 +131,9 @@ public class DrawableUtil {
 
         int actualHeight = options.outHeight;  //图片实际高
         int actualWidth = options.outWidth;     //图片实际宽
-
-        float imgRatio = actualWidth / actualHeight;
+        Log.i("DrawableUtil", "-----actualHeight--:" + actualHeight);
+        Log.i("DrawableUtil", "-----actualWidth--:" + actualWidth);
+        float imgRatio = actualWidth * 1.0f / actualHeight;
         float maxRatio = maxWidth * 1.0f / maxHeight;
 
 //     按比例计算最终宽高
@@ -249,5 +250,6 @@ public class DrawableUtil {
 
         return inSampleSize;
     }
+
 
 }

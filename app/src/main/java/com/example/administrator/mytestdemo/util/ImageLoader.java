@@ -22,4 +22,17 @@ public class ImageLoader {
             }
         });
     }
+
+    public static void loadImage(Context context, int resId, final ImageView imageView) {
+        Glide.with(context).load(resId).asBitmap().into(new SimpleTarget<Bitmap>() {
+            @Override
+            public void onResourceReady(Bitmap bitmap, GlideAnimation<? super Bitmap> glideAnimation) {
+                if (bitmap != null) {
+                    KLog.i("-----width:"+bitmap.getWidth());
+                    KLog.i("-----height:"+bitmap.getHeight());
+                    imageView.setImageBitmap(bitmap);
+                }
+            }
+        });
+    }
 }

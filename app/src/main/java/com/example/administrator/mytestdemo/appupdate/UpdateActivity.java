@@ -59,6 +59,10 @@ public class UpdateActivity extends BaseActivity implements View.OnClickListener
 
 
     private void loadPreUpdateView(UpdateBean bean) {
+        if (bean == null) {
+            finish();
+            return;
+        }
         fl_root.removeAllViews();
         View view = View.inflate(this, R.layout.view_pre_updata, null);
         fl_root.addView(view);
