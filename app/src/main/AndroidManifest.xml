@@ -101,10 +101,12 @@
             android:name=".appupdate.UpdateActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeTransparent" />
-        <activity android:name=".ble.SearchBleActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".carousel.CBActivity"/>
+        <activity
+            android:name=".ble.SearchBleActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".carousel.CBActivity" />
+        <activity android:name=".textlength.TextLengthActivity" />
+        <activity android:name=".recyclerview.RecyclerViewActivity"></activity>
     </application>
 
 </manifest>
