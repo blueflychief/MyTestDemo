@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:expandTextView="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <Button
@@ -16,44 +14,55 @@
         android:id="@+id/bt_leak"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_alipay"
         android:text="内存泄漏" />
 
     <Button
         android:id="@+id/bt_compress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_leak"
         android:text="压缩图片" />
 
     <Button
         android:id="@+id/bt_update"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_compress"
         android:text="APP升级演示" />
 
     <Button
         android:id="@+id/bt_video_Record"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_update"
         android:text="微信小视频" />
 
     <Button
         android:id="@+id/bt_ble"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_update"
         android:text="BLE测试" />
 
     <Button
         android:id="@+id/bt_cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_update"
         android:text="轮播图" />
 
+    <Button
+        android:id="@+id/bt_stickview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stickview" />
+
+    <Button
+        android:id="@+id/bt_photo_filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="photoFilter" />
+
+    <Button
+        android:id="@+id/bt_recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="recycler" />
 
     <Button
         android:id="@+id/bt_string"
@@ -62,12 +71,14 @@
         android:layout_below="@+id/bt_update"
         android:text="字符串换行" />
 
-
     <ImageView
         android:id="@+id/iv"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:visibility="gone" />
 
-
 </LinearLayout>
+
+
+
+

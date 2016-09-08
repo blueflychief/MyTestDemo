@@ -14,6 +14,9 @@ import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
 import com.example.administrator.mytestdemo.carousel.CBActivity;
 import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
+import com.example.administrator.mytestdemo.photofilterssdk.imageprocessors.PhotoFilterActivity;
+import com.example.administrator.mytestdemo.stickview.StickerViewActivity;
+import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.util.KLog;
@@ -29,6 +32,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_video_Record;
     private Button bt_ble;
     private Button bt_cb;
+    private Button bt_recycler;
     private Button bt_string;
     private ImageView imageView;
 
@@ -45,6 +49,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_update = (Button) findViewById(R.id.bt_update);
         bt_video_Record = (Button) findViewById(R.id.bt_video_Record);
         bt_string = (Button) findViewById(R.id.bt_string);
+        bt_recycler = (Button) findViewById(R.id.bt_recycler);
         bt_ble = (Button) findViewById(R.id.bt_ble);
         bt_cb = (Button) findViewById(R.id.bt_cb);
         bt_alipay.setOnClickListener(this);
@@ -54,6 +59,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_video_Record.setOnClickListener(this);
         bt_ble.setOnClickListener(this);
         bt_cb.setOnClickListener(this);
+        bt_recycler.setOnClickListener(this);
+        findViewById(R.id.bt_stickview).setOnClickListener(this);
+        findViewById(R.id.bt_photo_filter).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -98,8 +106,17 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.bt_cb:
                 startActivity(new Intent(MainActivity.this, CBActivity.class));
                 break;
-            case R.id.bt_string:
+            case R.id.bt_stickview:
+                startActivity(new Intent(MainActivity.this, StickerViewActivity.class));
+                break;
+            case R.id.bt_photo_filter:
+                startActivity(new Intent(MainActivity.this, PhotoFilterActivity.class));
+                break;
+            case R.id.bt_recycler:
                 startActivity(new Intent(MainActivity.this, RecyclerViewActivity.class));
+                break;
+            case R.id.bt_string:
+                startActivity(new Intent(MainActivity.this, TextLengthActivity.class));
                 break;
         }
     }

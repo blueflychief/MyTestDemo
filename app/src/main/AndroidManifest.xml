@@ -105,6 +105,12 @@
             android:name=".ble.SearchBleActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".carousel.CBActivity" />
+        <activity android:name=".stickview.StickerViewActivity"
+            android:label="@string/app_name"/>
+
+        <activity android:name=".photofilterssdk.imageprocessors.PhotoFilterActivity"
+            android:label="@string/app_name"/>
+
         <activity android:name=".textlength.TextLengthActivity" />
         <activity android:name=".recyclerview.RecyclerViewActivity"></activity>
     </application>
