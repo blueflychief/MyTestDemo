@@ -71,6 +71,14 @@
         android:layout_below="@+id/bt_update"
         android:text="字符串换行" />
 
+
+    <Button
+        android:id="@+id/bt_wifi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/bt_update"
+        android:text="WIFI扫描" />
+
     <ImageView
         android:id="@+id/iv"
         android:layout_width="300dp"

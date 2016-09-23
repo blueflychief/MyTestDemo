@@ -7,4 +7,11 @@
 
     <string name="tips">This is a custom TextView that can be expanded with a smooth transition animation,
         you can set the number of lines to expand,</string>
+
+
+    <string name="loading">Loading!</string>
+    <string name="action_share">Share</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_pauseresume">Pause</string>
+    <string name="action_resumepause">Resume</string>
 </resources>

@@ -13,14 +13,15 @@ import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
 import com.example.administrator.mytestdemo.carousel.CBActivity;
-import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
 import com.example.administrator.mytestdemo.photofilterssdk.imageprocessors.PhotoFilterActivity;
+import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
 import com.example.administrator.mytestdemo.stickview.StickerViewActivity;
 import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
+import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
 
 import java.io.File;
 
@@ -34,6 +35,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_cb;
     private Button bt_recycler;
     private Button bt_string;
+    private Button bt_wifi;
     private ImageView imageView;
 
 
@@ -49,6 +51,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_update = (Button) findViewById(R.id.bt_update);
         bt_video_Record = (Button) findViewById(R.id.bt_video_Record);
         bt_string = (Button) findViewById(R.id.bt_string);
+        bt_wifi = (Button) findViewById(R.id.bt_wifi);
         bt_recycler = (Button) findViewById(R.id.bt_recycler);
         bt_ble = (Button) findViewById(R.id.bt_ble);
         bt_cb = (Button) findViewById(R.id.bt_cb);
@@ -62,6 +65,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_recycler.setOnClickListener(this);
         findViewById(R.id.bt_stickview).setOnClickListener(this);
         findViewById(R.id.bt_photo_filter).setOnClickListener(this);
+        findViewById(R.id.bt_wifi).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -117,6 +121,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_string:
                 startActivity(new Intent(MainActivity.this, TextLengthActivity.class));
+                break;
+            case R.id.bt_wifi:
+                startActivity(new Intent(MainActivity.this, WifiTestActivity.class));
                 break;
         }
     }
