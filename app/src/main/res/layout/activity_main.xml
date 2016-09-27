@@ -1,91 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/bt_alipay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="支付宝支付Demo" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:orientation="vertical">
 
-    <Button
-        android:id="@+id/bt_leak"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="内存泄漏" />
+        <Button
+            android:id="@+id/bt_alipay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="支付宝支付Demo"/>
 
-    <Button
-        android:id="@+id/bt_compress"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="压缩图片" />
+        <Button
+            android:id="@+id/bt_leak"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内存泄漏"/>
 
-    <Button
-        android:id="@+id/bt_update"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="APP升级演示" />
+        <Button
+            android:id="@+id/bt_compress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="压缩图片"/>
 
-    <Button
-        android:id="@+id/bt_video_Record"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="微信小视频" />
+        <Button
+            android:id="@+id/bt_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APP升级演示"/>
 
-    <Button
-        android:id="@+id/bt_ble"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="BLE测试" />
+        <Button
+            android:id="@+id/bt_video_Record"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="微信小视频"/>
 
-    <Button
-        android:id="@+id/bt_cb"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="轮播图" />
+        <Button
+            android:id="@+id/bt_ble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BLE测试"/>
 
-    <Button
-        android:id="@+id/bt_stickview"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="stickview" />
+        <Button
+            android:id="@+id/bt_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="轮播图"/>
 
-    <Button
-        android:id="@+id/bt_photo_filter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="photoFilter" />
+        <Button
+            android:id="@+id/bt_stickview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="stickview"/>
 
-    <Button
-        android:id="@+id/bt_recycler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="recycler" />
+        <Button
+            android:id="@+id/bt_photo_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="photoFilter"/>
 
-    <Button
-        android:id="@+id/bt_string"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_update"
-        android:text="字符串换行" />
+        <Button
+            android:id="@+id/bt_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="recycler"/>
+
+        <Button
+            android:id="@+id/bt_string"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="字符串换行"/>
 
 
-    <Button
-        android:id="@+id/bt_wifi"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/bt_update"
-        android:text="WIFI扫描" />
+        <Button
+            android:id="@+id/bt_wifi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="WIFI扫描"/>
 
-    <ImageView
-        android:id="@+id/iv"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:visibility="gone" />
+        <Button
+            android:id="@+id/bt_superrecycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="superrecycler"/>
 
-</LinearLayout>
+        <ImageView
+            android:id="@+id/iv"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</ScrollView>
+
 
 
 

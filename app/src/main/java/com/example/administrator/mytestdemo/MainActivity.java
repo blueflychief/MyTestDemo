@@ -16,6 +16,7 @@ import com.example.administrator.mytestdemo.carousel.CBActivity;
 import com.example.administrator.mytestdemo.photofilterssdk.imageprocessors.PhotoFilterActivity;
 import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
 import com.example.administrator.mytestdemo.stickview.StickerViewActivity;
+import com.example.administrator.mytestdemo.superrecycler.SuperRecyclerActivity;
 import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
@@ -36,6 +37,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_recycler;
     private Button bt_string;
     private Button bt_wifi;
+    private Button bt_superrecycler;
     private ImageView imageView;
 
 
@@ -55,6 +57,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_recycler = (Button) findViewById(R.id.bt_recycler);
         bt_ble = (Button) findViewById(R.id.bt_ble);
         bt_cb = (Button) findViewById(R.id.bt_cb);
+        bt_superrecycler = (Button) findViewById(R.id.bt_superrecycler);
         bt_alipay.setOnClickListener(this);
         bt_leak.setOnClickListener(this);
         bt_compress.setOnClickListener(this);
@@ -63,6 +66,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_ble.setOnClickListener(this);
         bt_cb.setOnClickListener(this);
         bt_recycler.setOnClickListener(this);
+        bt_superrecycler.setOnClickListener(this);
         findViewById(R.id.bt_stickview).setOnClickListener(this);
         findViewById(R.id.bt_photo_filter).setOnClickListener(this);
         findViewById(R.id.bt_wifi).setOnClickListener(this);
@@ -124,6 +128,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_wifi:
                 startActivity(new Intent(MainActivity.this, WifiTestActivity.class));
+                break;
+            case R.id.bt_superrecycler:
+                startActivity(new Intent(MainActivity.this, SuperRecyclerActivity.class));
                 break;
         }
     }

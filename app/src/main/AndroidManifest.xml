@@ -115,6 +115,8 @@
         <activity android:name=".recyclerview.RecyclerViewActivity"/>
         <activity android:name=".wifi.WifiTestActivity">
         </activity>
+        <activity android:name=".superrecycler.SuperRecyclerActivity">
+        </activity>
     </application>
 
 </manifest>
