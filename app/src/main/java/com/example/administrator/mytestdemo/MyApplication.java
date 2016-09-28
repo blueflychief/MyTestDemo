@@ -1,6 +1,7 @@
 package com.example.administrator.mytestdemo;
 
 import android.app.Application;
+import android.widget.TextView;
 
 import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.util.PreferencesUtils;

@@ -1,5 +1,7 @@
 package com.example.administrator.mytestdemo.recyclerview;
 
+import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,55 +10,38 @@ import android.widget.TextView;
 
 import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.util.KLog;
-import com.example.administrator.mytestdemo.util.StringUtils;
+import com.example.administrator.mytestdemo.widge.recycler.CustomRefreshAdapter;
+import com.example.administrator.mytestdemo.widge.recycler.CustomRefreshRecycleView;
 
 import java.util.List;
 
 /**
  * Created by Administrator on 9/7/2016.
  */
-public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.MyHolder> {
+public class MyRecyclerAdapter extends CustomRefreshAdapter<MyRecyclerAdapter.MyHolder> {
     public List<String> mDataList;
 
-    public MyRecyclerAdapter(List<String> mDataList) {
-        this.mDataList = mDataList;
+    /**
+     * 创建适配器
+     *
+     * @param context
+     * @param list
+     * @param refreshView
+     */
+    public MyRecyclerAdapter(Context context, List<String> list, CustomRefreshRecycleView refreshView) {
+        super(context, list, refreshView);
+        mDataList = list;
     }
 
 
     @Override
-    public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public MyHolder onCreateHolder(ViewGroup parent, int viewType) {
         return new MyHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycler_view, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(final MyHolder holder, int position) {
-        String s = mDataList.get(position);
-        KLog.i("------et_src:" + s);
-        KLog.i("------et_src:" + s.length());
-        int count = StringUtils.findCtrl(s);
-        KLog.i("------et_src_count:" + count);
-
-
-        // TODO: 9/7/2016
-        if (count <= 6 && s.length() < 140) {
-            //不需显示全文
-        } else {
-            //计算是否显示全文
-        }
-
-
+    public void onBindHolder(MyHolder holder, int position) {
         holder.tv_text.setText(mDataList.get(position));
-        final String s2 = holder.tv_text.getText().toString();
-        KLog.i("------tv_dst:" + s2);
-        KLog.i("------tv_dst:" + s2.length());
-
-        holder.tv_text.post(new Runnable() {
-            @Override
-            public void run() {
-                KLog.i("------tv_dst_count:" + StringUtils.findCtrl(s2));
-                KLog.i("------tv_dst_getLineCount:" + holder.tv_text.getLineCount());
-            }
-        });
     }
 
     @Override
@@ -64,6 +49,26 @@ public class MyRecyclerAdapter extends RecyclerView.Adapter<MyRecyclerAdapter.My
         return mDataList == null ? 0 : mDataList.size();
     }
 
+
+    public void addData(boolean isRefresh, final List<String> list) {
+        if (isRefresh) {
+            mDataList.clear();
+            notifyDataSetChanged();
+        }
+
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                KLog.i("----------rangechange");
+                if (list != null && list.size() > 0) {
+                    mDataList.addAll(list);
+                }
+                notifyItemRangeChanged(mDataList.size(), list == null ? 0 : list.size());
+            }
+        }, 1000);
+
+    }
 
     static class MyHolder extends RecyclerView.ViewHolder {
         public TextView tv_text;

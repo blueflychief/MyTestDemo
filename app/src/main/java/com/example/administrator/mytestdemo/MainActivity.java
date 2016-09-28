@@ -40,7 +40,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_superrecycler;
     private ImageView imageView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
