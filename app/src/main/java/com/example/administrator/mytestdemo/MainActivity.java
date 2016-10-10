@@ -14,6 +14,8 @@ import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
 import com.example.administrator.mytestdemo.carousel.CBActivity;
 import com.example.administrator.mytestdemo.photofilterssdk.imageprocessors.PhotoFilterActivity;
+import com.example.administrator.mytestdemo.playeraudio.PlayAudioActivity;
+import com.example.administrator.mytestdemo.premission.PermissionActivity;
 import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
 import com.example.administrator.mytestdemo.stickview.StickerViewActivity;
 import com.example.administrator.mytestdemo.superrecycler.SuperRecyclerActivity;
@@ -69,6 +71,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         findViewById(R.id.bt_stickview).setOnClickListener(this);
         findViewById(R.id.bt_photo_filter).setOnClickListener(this);
         findViewById(R.id.bt_wifi).setOnClickListener(this);
+        findViewById(R.id.bt_audio).setOnClickListener(this);
+        findViewById(R.id.bt_permission).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -130,6 +134,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_superrecycler:
                 startActivity(new Intent(MainActivity.this, SuperRecyclerActivity.class));
+                break;
+
+            case R.id.bt_permission:
+                startActivity(new Intent(MainActivity.this, PermissionActivity.class));
+                break;
+
+            case R.id.bt_audio:
+                startActivity(new Intent(MainActivity.this, PlayAudioActivity.class));
                 break;
         }
     }

@@ -91,6 +91,21 @@
             android:layout_below="@+id/bt_update"
             android:text="superrecycler"/>
 
+        <Button
+            android:id="@+id/bt_audio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="播放在线音频"/>
+
+
+        <Button
+            android:id="@+id/bt_permission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="运行时权限"/>
+
         <ImageView
             android:id="@+id/iv"
             android:layout_width="300dp"
