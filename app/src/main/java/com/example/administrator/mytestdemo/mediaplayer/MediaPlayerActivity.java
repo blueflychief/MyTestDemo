@@ -2,26 +2,16 @@ package com.example.administrator.mytestdemo.mediaplayer;
 
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.example.administrator.mytestdemo.R;
-
-import static com.example.administrator.mytestdemo.R.id.btn_pause;
-import static com.example.administrator.mytestdemo.R.id.btn_play;
-import static com.example.administrator.mytestdemo.R.id.btn_replay;
-import static com.example.administrator.mytestdemo.R.id.btn_stop;
-import static com.example.administrator.mytestdemo.R.id.et_path;
-import static com.example.administrator.mytestdemo.R.id.seekBar;
 
 public class MediaPlayerActivity extends AppCompatActivity {
 
@@ -160,18 +150,6 @@ public class MediaPlayerActivity extends AppCompatActivity {
         stop();
     }
 
-    /*
-         * 停止播放
-         */
-    protected void stop() {
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.stop();
-            mediaPlayer.release();
-            mediaPlayer = null;
-//            btn_play.setEnabled(true);
-            isPlaying = false;
-        }
-    }
 
     /**
      * 开始播放
@@ -234,7 +212,7 @@ public class MediaPlayerActivity extends AppCompatActivity {
                 @Override
                 public void onCompletion(MediaPlayer mp) {
                     iv_play.setAlpha(1.0f);
-                    releaseMediaPlayer();
+                    stop();
                     // 在播放完毕被回调
 //                    btn_play.setEnabled(true);
                 }
@@ -245,7 +223,7 @@ public class MediaPlayerActivity extends AppCompatActivity {
                 @Override
                 public boolean onError(MediaPlayer mp, int what, int extra) {
                     // 发生错误重新播放
-                    releaseMediaPlayer();
+                    stop();
                     play(0);
                     return false;
                 }
@@ -256,12 +234,19 @@ public class MediaPlayerActivity extends AppCompatActivity {
 
     }
 
-    private void releaseMediaPlayer() {
+    /*
+         * 停止播放
+         */
+    protected void stop() {
         if (mediaPlayer != null) {
+            if (mediaPlayer.isPlaying()) {
+                mediaPlayer.stop();
+            }
             mediaPlayer.release();
             mediaPlayer = null;
+            //            btn_play.setEnabled(true);
+            isPlaying = false;
         }
-        isPlaying = false;
     }
 
     /**
@@ -280,21 +265,41 @@ public class MediaPlayerActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (mediaPlayer!=null&&mediaPlayer.isPlaying()) {
+            currentPosition=mediaPlayer.getCurrentPosition();
+            stop();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+//        if (currentPosition) {
+//        }
+    }
+
     /**
      * 暂停或继续
      */
     protected void pause() {
         if (mediaPlayer != null && !mediaPlayer.isPlaying()) {
-//            if (btn_pause.getText().toString().trim().equals("继续")) {
+            if (!mediaPlayer.isPlaying()) {
+                //            if (btn_pause.getText().toString().trim().equals("继续")) {
 //            btn_pause.setText("暂停");
-            mediaPlayer.start();
-            Toast.makeText(this, "继续播放", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        if (mediaPlayer != null && mediaPlayer.isPlaying()) {
-            mediaPlayer.pause();
+                mediaPlayer.start();
+                Toast.makeText(this, "继续播放", Toast.LENGTH_SHORT).show();
+                isPlaying=true;
+                return;
+            } else {
+                mediaPlayer.pause();
 //            btn_pause.setText("继续");
-            Toast.makeText(this, "暂停播放", Toast.LENGTH_SHORT).show();
+                isPlaying=false;
+                Toast.makeText(this, "暂停播放", Toast.LENGTH_SHORT).show();
+
+            }
         }
 
     }
