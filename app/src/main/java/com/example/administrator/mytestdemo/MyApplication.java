@@ -5,6 +5,7 @@ import android.widget.TextView;
 
 import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.util.PreferencesUtils;
+import com.example.administrator.mytestdemo.util.ToastUtils;
 import com.yolanda.nohttp.NoHttp;
 
 public class MyApplication extends Application {
@@ -15,6 +16,7 @@ public class MyApplication extends Application {
         super.onCreate();
         INSTANCE = this;
         KLog.init(true, "klog");
+        ToastUtils.init(this);
         PreferencesUtils.init(this);
         NoHttp.initialize(this);
     }

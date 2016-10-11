@@ -106,6 +106,20 @@
             android:layout_below="@+id/bt_update"
             android:text="运行时权限"/>
 
+        <Button
+            android:id="@+id/bt_yzjpermission"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="YZJ运行时权限"/>
+
+        <Button
+            android:id="@+id/bt_mediaplayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="mediaplayer"/>
+
         <ImageView
             android:id="@+id/iv"
             android:layout_width="300dp"
