@@ -67,10 +67,12 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        //在这里我们指定MediaPlayer在当前的Surface中进行播放
-        player.setDisplay(holder);
-        //在指定了MediaPlayer播放的容器后，我们就可以使用prepare或者prepareAsync来准备播放了
-        player.prepareAsync();
+        if (player!=null) {
+            //在这里我们指定MediaPlayer在当前的Surface中进行播放
+            player.setDisplay(holder);
+            //在指定了MediaPlayer播放的容器后，我们就可以使用prepare或者prepareAsync来准备播放了
+            player.prepareAsync();
+        }
 
     }
 
