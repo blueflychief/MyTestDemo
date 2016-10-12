@@ -13,6 +13,7 @@ import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
 import com.example.administrator.mytestdemo.carousel.CBActivity;
+import com.example.administrator.mytestdemo.mediaplayer.MediaPlayer2Activity;
 import com.example.administrator.mytestdemo.mediaplayer.MediaPlayerActivity;
 import com.example.administrator.mytestdemo.photofilterssdk.imageprocessors.PhotoFilterActivity;
 import com.example.administrator.mytestdemo.playeraudio.PlayAudioActivity;
@@ -151,7 +152,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 startActivity(new Intent(MainActivity.this, PlayAudioActivity.class));
                 break;
             case R.id.bt_mediaplayer:
-                startActivity(new Intent(MainActivity.this, MediaPlayerActivity.class));
+//                startActivity(new Intent(MainActivity.this, MediaPlayerActivity.class));
+                startActivity(new Intent(MainActivity.this, MediaPlayer2Activity.class));
                 break;
         }
     }

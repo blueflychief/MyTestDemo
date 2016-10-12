@@ -15,8 +15,8 @@ import com.example.administrator.mytestdemo.R;
 
 public class MediaPlayerActivity extends AppCompatActivity {
 
-    private static final String mVideoUrl = "http://kuaikuai.oss-cn-beijing.aliyuncs.com/upload/e3890058-8af7-470f-9687-42274957371b1476174025721_video.mp4";
-//    private static final String mVideoUrl = "/storage/emulated/0/DCIM/Camera/VID_20161011_180344.mp4";
+//    private static final String mVideoUrl = "http://kuaikuai.oss-cn-beijing.aliyuncs.com/upload/e3890058-8af7-470f-9687-42274957371b1476174025721_video.mp4";
+    private static final String mVideoUrl = "/storage/emulated/0/DCIM/Camera/VID_20161011_180344.mp4";
 
     private static final String TAG = "MediaPlayerActivity";
     private SurfaceView sv;
