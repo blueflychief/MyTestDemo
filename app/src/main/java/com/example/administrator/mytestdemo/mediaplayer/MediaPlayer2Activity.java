@@ -28,7 +28,6 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
     private SurfaceView surfaceView;
     private SurfaceHolder holder;
     private MediaPlayer player;
-    private int vWidth, vHeight;
     //private boolean readyToPlay = false;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -36,45 +35,38 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
         this.setContentView(R.layout.activity_media_player2);
 
         surfaceView = (SurfaceView) this.findViewById(R.id.video_surface);
-        //给SurfaceView添加CallBack监听
         holder = surfaceView.getHolder();
         holder.addCallback(this);
-        //为了可以播放视频或者使用Camera预览，我们需要指定其Buffer类型
         holder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-
-        //下面开始实例化MediaPlayer对象
-        player = new MediaPlayer();
-        player.setOnCompletionListener(this);
-        player.setOnErrorListener(this);
-        player.setOnInfoListener(this);
-        player.setOnPreparedListener(this);
-        player.setOnSeekCompleteListener(this);
-        player.setOnVideoSizeChangedListener(this);
-        KLog.v("----------Begin:::", "surfaceDestroyed called");
-        //然后指定需要播放文件的路径，初始化MediaPlayer
-        try {
-            player.setDataSource(mVideoUrl);
-            KLog.v("----------Next:::", "surfaceDestroyed called");
-        } catch (IllegalArgumentException e) {
-            e.printStackTrace();
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        //然后，我们取得当前Display对象
         currDisplay = this.getWindowManager().getDefaultDisplay();
+
+        initPlayer();
+    }
+
+    private void initPlayer() {
+        if (player == null) {
+            player = new MediaPlayer();
+            player.setOnCompletionListener(this);
+            player.setOnErrorListener(this);
+            player.setOnInfoListener(this);
+            player.setOnPreparedListener(this);
+            player.setOnSeekCompleteListener(this);
+            player.setOnVideoSizeChangedListener(this);
+            try {
+                player.setDataSource(mVideoUrl);
+            } catch (IllegalArgumentException | IllegalStateException | IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
     public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-        // 当Surface尺寸等参数改变时触发
         KLog.v("----------Surface Change:::", "surfaceChanged called");
     }
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        // 当SurfaceView中的Surface被创建的时候被调用
         //在这里我们指定MediaPlayer在当前的Surface中进行播放
         player.setDisplay(holder);
         //在指定了MediaPlayer播放的容器后，我们就可以使用prepare或者prepareAsync来准备播放了
@@ -84,7 +76,6 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
-
         KLog.v("----------Surface Destory:::", "surfaceDestroyed called");
     }
 
@@ -107,12 +98,11 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
     public void onPrepared(MediaPlayer player) {
         // 当prepare完成后，该方法触发，在这里我们播放视频
         KLog.v("----------onPrepared", "onSeekComplete called");
-
-
         //首先取得video的宽和高
-        vWidth = player.getVideoWidth();
-        vHeight = player.getVideoHeight();
+        int vWidth = player.getVideoWidth();
+        int vHeight = player.getVideoHeight();
 
+        //如果视频的宽或者高大于屏幕的宽高
         if (vWidth > currDisplay.getWidth() || vHeight > currDisplay.getHeight()) {
             //如果video的宽或者高超出了当前屏幕的大小，则要进行缩放
             float wRatio = (float) vWidth / (float) currDisplay.getWidth();
@@ -123,12 +113,8 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
 
             vWidth = (int) Math.ceil((float) vWidth / ratio);
             vHeight = (int) Math.ceil((float) vHeight / ratio);
-
             //设置surfaceView的布局参数
             surfaceView.setLayoutParams(new RelativeLayout.LayoutParams(vWidth, vHeight));
-
-            //然后开始播放视频
-
         } else {
             surfaceView.setLayoutParams(new RelativeLayout.LayoutParams(vWidth, vHeight));
         }
@@ -148,12 +134,13 @@ public class MediaPlayer2Activity extends Activity implements OnCompletionListen
             case MediaPlayer.MEDIA_INFO_NOT_SEEKABLE:
                 break;
         }
+
+        KLog.i("---------whatInfo:" + whatInfo + "---" + extra);
         return false;
     }
 
     @Override
     public boolean onError(MediaPlayer player, int whatError, int extra) {
-        KLog.v("----------Play Error:::", "onError called");
         switch (whatError) {
             case MediaPlayer.MEDIA_ERROR_SERVER_DIED:
                 KLog.v("----------Play Error:::", "MEDIA_ERROR_SERVER_DIED");
