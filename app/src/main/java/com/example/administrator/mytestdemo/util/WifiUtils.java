@@ -10,9 +10,6 @@ import android.util.Log;
 
 import java.util.List;
 
-/**
- * Created by LuoShuiquan on 9/23/2016.
- */
 
 public class WifiUtils {
     private static final String TAG = "WifiUtils";

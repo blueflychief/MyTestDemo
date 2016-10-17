@@ -1,8 +1,5 @@
 package com.example.administrator.mytestdemo.widge.recycler;
 
-/**
- * Created by Lsq on 6/17/2016.--8:02 PM
- */
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

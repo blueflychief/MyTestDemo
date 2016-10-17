@@ -4,11 +4,14 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.carousel.cb.CBViewHolderCreator;
 import com.example.administrator.mytestdemo.carousel.cb.ConvenientBanner;
 import com.example.administrator.mytestdemo.carousel.cb.LocalImageHolderView;
 import com.example.administrator.mytestdemo.carousel.cb.OnItemClickListener;
+import com.example.administrator.mytestdemo.util.ImageLoader;
+import com.example.administrator.mytestdemo.widge.kenburnsview.KenBurnsView;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -18,6 +21,7 @@ import java.util.List;
 
 public class CBActivity extends ActionBarActivity {
     private ConvenientBanner convenientBanner;//顶部广告栏控件
+    private KenBurnsView kenBurnsView;//顶部广告栏控件
     private ArrayList<Integer> localImages = new ArrayList<Integer>();
     private List<String> networkImages;
     private String[] images = {"http://img2.imgtn.bdimg.com/it/u=3093785514,1341050958&fm=21&gp=0.jpg",
@@ -35,12 +39,15 @@ public class CBActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cb);
         convenientBanner = (ConvenientBanner) findViewById(R.id.convenientBanner);
+        kenBurnsView = (KenBurnsView) findViewById(R.id.KenBurnsView);
         init();
     }
 
 
     private void init() {
         loadTestDatas();
+
+        ImageLoader.loadImage(this, "https://unsplash.it/1024/768", kenBurnsView);
         networkImages = Arrays.asList(images);
         convenientBanner
 //                .setPages(new CBViewHolderCreator<NetworkImageHolderView>() {
@@ -130,6 +137,10 @@ public class CBActivity extends ActionBarActivity {
         super.onResume();
         //开始自动翻页
         convenientBanner.startTurning(5000);
+
+        if (kenBurnsView != null) {
+            kenBurnsView.resume();
+        }
     }
 
     // 停止自动翻页
@@ -138,6 +149,9 @@ public class CBActivity extends ActionBarActivity {
         super.onPause();
         //停止翻页
         convenientBanner.stopTurning();
+        if (kenBurnsView != null) {
+            kenBurnsView.pause();
+        }
     }
 
 

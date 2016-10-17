@@ -9,9 +9,6 @@ import android.widget.RemoteViews;
 
 import com.example.administrator.mytestdemo.R;
 
-/**
- * Created by LuoShuiquan on 9/1/2016.
- */
 public class NotificationUtil {
 
 
