@@ -1,11 +1,15 @@
 package com.example.administrator.mytestdemo.recyclerview;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.view.View;
+import android.widget.Button;
 
+import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.widge.recycler.CustomRefreshRecycleView;
 
 import java.util.ArrayList;
@@ -19,14 +23,16 @@ public class RecyclerViewActivity extends AppCompatActivity implements
             "杂志封面(21张)\n" +
             " 同名电影的主题曲[74]  ；2月5日至6日，在日本东京举行演唱会；9月，发行专辑《依然范特西》；该专辑延续了周杰伦以往的音乐风格，并融合了中国风、RAP等曲风，其中与费玉清合唱的中国风歌曲《千里之外》获得第13届全球华语音乐榜中榜年度最佳歌曲奖、第29届十大中文金曲全国最受欢迎中文歌曲奖等奖项[75-76] ";
     private CustomRefreshRecycleView mRefreshRecycleView;
+    private Button bt_multi_recycler;
     private MyRecyclerAdapter mMyRecyclerAdapter;
     int index = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mRefreshRecycleView = new CustomRefreshRecycleView(this);
-        setContentView(mRefreshRecycleView);
+        setContentView(R.layout.activity_recycler);
+        bt_multi_recycler = (Button) findViewById(R.id.bt_multi_recycler);
+        mRefreshRecycleView = (CustomRefreshRecycleView) findViewById(R.id.recycler);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mRefreshRecycleView.setLayoutManager(linearLayoutManager);
@@ -34,7 +40,12 @@ public class RecyclerViewActivity extends AppCompatActivity implements
         mRefreshRecycleView.setAdapter(mMyRecyclerAdapter);
         mRefreshRecycleView.setOnLoadMoreListener(this);
         mRefreshRecycleView.setOnRefreshListener(this);
-
+        bt_multi_recycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(RecyclerViewActivity.this, MultiRecyclerViewActivity.class));
+            }
+        });
     }
 
     private List<String> initTestData() {

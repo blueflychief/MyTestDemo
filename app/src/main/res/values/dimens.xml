@@ -10,4 +10,10 @@
     <dimen name="recycler_size">100dp</dimen>
     <dimen name="thumbnail_horizontal_padding">8dp</dimen>
     <dimen name="thumbnail_vertical_padding">10dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="inset_margin">8dp</dimen>
+    <dimen name="connector_stroke">2dp</dimen>
 </resources>

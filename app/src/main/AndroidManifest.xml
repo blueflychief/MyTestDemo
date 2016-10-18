@@ -127,6 +127,9 @@
         </activity>
         <activity android:name=".mediaplayer.MediaPlayer2Activity">
         </activity>
+
+        <activity android:name=".recyclerview.MultiRecyclerViewActivity">
+        </activity>
     </application>
 
 </manifest>
