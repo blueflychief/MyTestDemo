@@ -2,6 +2,7 @@ package com.example.administrator.mytestdemo.recyclerview;
 
 /**
  * Created by Administrator on 10/18/2016.
+ * http://blog.csdn.net/antimage08/article/details/50199841
  */
 
 import android.os.Bundle;
