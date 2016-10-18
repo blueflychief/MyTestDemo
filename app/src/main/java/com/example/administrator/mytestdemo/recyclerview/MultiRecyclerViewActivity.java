@@ -38,13 +38,11 @@ public class MultiRecyclerViewActivity extends AppCompatActivity implements Simp
 
         // 垂直网格的连接线修饰
         mConnectors = new ConnectorDecoration(this);
-
         // 交错垂直网格
         mVerticalGridManager.setSpanSizeLookup(new GridStaggerLookup());
-
         mAdapter = new SimpleItemAdapter(this);
-        mAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(this);
 
         // 对所有连接应用边缘修饰
         mRecyclerView.addItemDecoration(new InsetDecoration(this));
