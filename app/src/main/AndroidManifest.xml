@@ -130,6 +130,9 @@
 
         <activity android:name=".recyclerview.MultiRecyclerViewActivity">
         </activity>
+
+        <activity android:name=".verticalviewpager.ViewPagerActivity">
+        </activity>
     </application>
 
 </manifest>

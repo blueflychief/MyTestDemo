@@ -26,6 +26,7 @@ import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.util.KLog;
+import com.example.administrator.mytestdemo.verticalviewpager.ViewPagerActivity;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
 
@@ -78,6 +79,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         findViewById(R.id.bt_permission).setOnClickListener(this);
         findViewById(R.id.bt_yzjpermission).setOnClickListener(this);
         findViewById(R.id.bt_mediaplayer).setOnClickListener(this);
+        findViewById(R.id.bt_vertical_viewpager).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -150,6 +152,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             case R.id.bt_audio:
                 startActivity(new Intent(MainActivity.this, PlayAudioActivity.class));
+                break;
+            case R.id.bt_vertical_viewpager:
+                startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
                 break;
             case R.id.bt_mediaplayer:
 //                startActivity(new Intent(MainActivity.this, MediaPlayerActivity.class));

@@ -120,6 +120,13 @@
             android:layout_below="@+id/bt_update"
             android:text="mediaplayer"/>
 
+        <Button
+            android:id="@+id/bt_vertical_viewpager"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/bt_update"
+            android:text="vertical_viewpager"/>
+
         <ImageView
             android:id="@+id/iv"
             android:layout_width="300dp"
