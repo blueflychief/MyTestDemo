@@ -127,11 +127,15 @@
         </activity>
         <activity android:name=".mediaplayer.MediaPlayer2Activity">
         </activity>
-
         <activity android:name=".recyclerview.MultiRecyclerViewActivity">
         </activity>
-
-        <activity android:name=".verticalviewpager.ViewPagerActivity">
+        <activity android:name=".customerview.CustomActivity">
+        </activity>
+        <activity android:name=".popwindow.PopwindowActivity">
+        </activity>
+        <activity android:name=".flowtag.FlowTagActivity">
+        </activity>
+        <activity android:name=".MatrixActivity">
         </activity>
     </application>
 

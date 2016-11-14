@@ -18,4 +18,9 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowIsTranslucent">true</item>
     </style>
+
+    <style name="AnimationFromBottom">
+        <item name="android:windowEnterAnimation">@anim/popupwindow_out</item>
+        <item name="android:windowExitAnimation">@anim/popupwindow_in</item>
+    </style>
 </resources>

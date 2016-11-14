@@ -10,4 +10,46 @@
     <color name="thumb_background_color">#000000</color>
     <color name="zomato_red">#a40100</color>
     <color name="placeholder_background">#222322</color>
+
+
+
+    <!--公共颜色部分-->
+    <color name="public_primary_color">#FFC99533</color>   <!--主色调-->
+    <color name="public_primary_color_dark">#FFAB7E2B</color>
+    <color name="public_divider_line_color">#D9D9D9</color>     <!--分割线-->
+
+    <color name="public_tool_bar_bg_color">#80000000</color>    <!-- toolbar bar 背景色 -->
+    <color name="public_status_bar_color">#535353</color>    <!-- status bar 背景色 -->
+    <color name="background_primary">#F1F1F1</color>     <!--背景颜色，Activity背景-->
+
+    <color name="menu_select_bg_color">#50000000</color>
+
+
+    <color name="color_blank">#FF000000</color>
+    <color name="color_red">#FFff0000</color>
+    <color name="color_green">#FF00FF00</color>
+    <color name="color_blue">#FF0000FF</color>
+    <color name="color_yellow">#FFFFFF00</color>
+    <color name="color_blue_sky">#FF00FFFF</color>
+    <color name="color_white">#FFFFFFFF</color>
+
+
+    <color name="color_title">#FF555555</color>
+    <color name="color_title_second">#737272</color>
+
+    <color name="black">#FF000000</color>
+    <color name="gray">#FF888888</color>
+    <color name="gray_1">#F0F0F0</color>
+    <color name="gray_dark">#FF5E5D5D</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="red">#FFFF0000</color>
+    <color name="green">#FF00FF00</color>
+    <color name="greenDark">#229719</color>
+    <color name="blue">#FF0000FF</color>
+    <color name="yellow">#FFFFFF00</color>
+    <color name="orange">#FFFFA500</color>
+    <color name="purple">#FFA020F0</color>
+    <color name="transparent">#00000000</color>
+    <color name="transparent_half_1">#10000000</color>
+    <color name="transparent_half_2">#20000000</color>
 </resources>

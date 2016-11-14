@@ -14,4 +14,10 @@
     <string name="action_reset">Reset</string>
     <string name="action_pauseresume">Pause</string>
     <string name="action_resumepause">Resume</string>
+
+
+    <string name="string_public_share">分享到</string>
+    <string name="string_weixin_friend">微信好友</string>
+    <string name="string_weixin_circle">微信朋友圈</string>
+    <string name="string_weixin_collect">微信收藏</string>
 </resources>

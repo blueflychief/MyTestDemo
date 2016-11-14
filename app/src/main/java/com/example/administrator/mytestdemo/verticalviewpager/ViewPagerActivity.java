@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -60,7 +59,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         VerticalViewPager2 verticalViewPager = (VerticalViewPager2) findViewById(R.id.verticalviewpager);
 
         verticalViewPager.setAdapter(new DummyAdapter(getSupportFragmentManager()));
-        verticalViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.pagemargin));
+//        verticalViewPager.setPageMargin(getResources().getDimensionPixelSize(R.dimen.pagemargin));
         verticalViewPager.setPageMarginDrawable(new ColorDrawable(getResources().getColor(android.R.color.holo_green_dark)));
 
 //        verticalViewPager.setPageTransformer(true, new ViewPager.PageTransformer() {

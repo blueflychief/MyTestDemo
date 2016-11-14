@@ -13,10 +13,12 @@ import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
 import com.example.administrator.mytestdemo.carousel.CBActivity;
+import com.example.administrator.mytestdemo.customerview.CustomActivity;
+import com.example.administrator.mytestdemo.flowtag.FlowTagActivity;
 import com.example.administrator.mytestdemo.mediaplayer.MediaPlayer2Activity;
-import com.example.administrator.mytestdemo.mediaplayer.MediaPlayerActivity;
 import com.example.administrator.mytestdemo.photofilterssdk.imageprocessors.PhotoFilterActivity;
 import com.example.administrator.mytestdemo.playeraudio.PlayAudioActivity;
+import com.example.administrator.mytestdemo.popwindow.PopwindowActivity;
 import com.example.administrator.mytestdemo.premission.PermissionActivity;
 import com.example.administrator.mytestdemo.premission.YzjPermissionActivity;
 import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
@@ -26,7 +28,6 @@ import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.util.KLog;
-import com.example.administrator.mytestdemo.verticalviewpager.ViewPagerActivity;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
 
@@ -79,7 +80,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         findViewById(R.id.bt_permission).setOnClickListener(this);
         findViewById(R.id.bt_yzjpermission).setOnClickListener(this);
         findViewById(R.id.bt_mediaplayer).setOnClickListener(this);
-        findViewById(R.id.bt_vertical_viewpager).setOnClickListener(this);
+        findViewById(R.id.bt_customview).setOnClickListener(this);
+        findViewById(R.id.bt_ppw).setOnClickListener(this);
+        findViewById(R.id.bt_flow).setOnClickListener(this);
+        findViewById(R.id.bt_matrix).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -153,12 +157,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.bt_audio:
                 startActivity(new Intent(MainActivity.this, PlayAudioActivity.class));
                 break;
-            case R.id.bt_vertical_viewpager:
-                startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
-                break;
+//            case R.id.bt_vertical_viewpager:
+//                startActivity(new Intent(MainActivity.this, ViewPagerActivity.class));
+//                break;
             case R.id.bt_mediaplayer:
 //                startActivity(new Intent(MainActivity.this, MediaPlayerActivity.class));
                 startActivity(new Intent(MainActivity.this, MediaPlayer2Activity.class));
+                break;
+            case R.id.bt_customview:
+//                startActivity(new Intent(MainActivity.this, MediaPlayerActivity.class));
+                startActivity(new Intent(MainActivity.this, CustomActivity.class));
+                break;
+            case R.id.bt_ppw:
+//                startActivity(new Intent(MainActivity.this, MediaPlayerActivity.class));
+                startActivity(new Intent(MainActivity.this, PopwindowActivity.class));
+                break;
+            case R.id.bt_flow:
+                startActivity(new Intent(MainActivity.this, FlowTagActivity.class));
+                break;
+            case R.id.bt_matrix:
+                startActivity(new Intent(MainActivity.this, MatrixActivity.class));
                 break;
         }
     }

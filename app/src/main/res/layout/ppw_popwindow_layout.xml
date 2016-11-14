@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.administrator.mytestdemo.widge.SuitableLinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include layout="@layout/include_horizontal_divide_line"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:gravity="center"
+        android:padding="@dimen/dp6"
+        android:text="@string/string_public_share"
+        android:textColor="@color/color_blank"
+        android:textSize="@dimen/sp16"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/ll_weixin_friend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_public_white_selector"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp8">
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:src="@drawable/ic_weixin_friend"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp4"
+                android:text="@string/string_weixin_friend"
+                android:textColor="@color/color_blank"
+                android:textSize="@dimen/sp16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_weixin_circle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_public_white_selector"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp8">
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:src="@drawable/ic_weixin_circle"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp4"
+                android:text="@string/string_weixin_circle"
+                android:textColor="@color/color_blank"
+                android:textSize="@dimen/sp16"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_weixin_collect"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_public_white_selector"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/dp8">
+
+            <ImageView
+                android:layout_width="@dimen/dp40"
+                android:layout_height="@dimen/dp40"
+                android:src="@drawable/ic_weixin_collect"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp4"
+                android:text="@string/string_weixin_collect"
+                android:textColor="@color/color_blank"
+                android:textSize="@dimen/sp16"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.example.administrator.mytestdemo.widge.SuitableLinearLayout>
