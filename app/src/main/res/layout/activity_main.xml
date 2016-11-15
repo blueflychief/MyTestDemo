@@ -158,12 +158,20 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bt_update"
                 android:text="流式标签"/>
+
             <Button
                 android:id="@+id/bt_matrix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/bt_update"
                 android:text="matrix"/>
+
+            <Button
+                android:id="@+id/bt_scroller"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bt_update"
+                android:text="scroller"/>
         </LinearLayout>
     </LinearLayout>
 

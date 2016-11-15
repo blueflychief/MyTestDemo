@@ -48,7 +48,6 @@
         android:allowBackup="true"
         android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:largeHeap="true"
         android:persistent="true"
         android:supportsRtl="true"
@@ -136,6 +135,8 @@
         <activity android:name=".flowtag.FlowTagActivity">
         </activity>
         <activity android:name=".MatrixActivity">
+        </activity>
+        <activity android:name=".scroller.ScrollerActivity">
         </activity>
     </application>
 

@@ -22,6 +22,7 @@ import com.example.administrator.mytestdemo.popwindow.PopwindowActivity;
 import com.example.administrator.mytestdemo.premission.PermissionActivity;
 import com.example.administrator.mytestdemo.premission.YzjPermissionActivity;
 import com.example.administrator.mytestdemo.recyclerview.RecyclerViewActivity;
+import com.example.administrator.mytestdemo.scroller.ScrollerActivity;
 import com.example.administrator.mytestdemo.stickview.StickerViewActivity;
 import com.example.administrator.mytestdemo.superrecycler.SuperRecyclerActivity;
 import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
@@ -84,6 +85,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         findViewById(R.id.bt_ppw).setOnClickListener(this);
         findViewById(R.id.bt_flow).setOnClickListener(this);
         findViewById(R.id.bt_matrix).setOnClickListener(this);
+        findViewById(R.id.bt_scroller).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -177,6 +179,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_matrix:
                 startActivity(new Intent(MainActivity.this, MatrixActivity.class));
+                break;
+            case R.id.bt_scroller:
+                startActivity(new Intent(MainActivity.this, ScrollerActivity.class));
                 break;
         }
     }

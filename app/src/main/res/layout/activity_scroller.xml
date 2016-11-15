@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_scroller"
+    android:layout_width="match_parent"
+    android:background="@color/color_blue_sky"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:actionBarSize"
+        android:background="@color/colorPrimary"
+        android:titleTextColor="@color/white"/>
+
+    <com.example.administrator.mytestdemo.scroller.ScrollerLayout
+        android:id="@+id/ll_root"
+        android:layout_width="@dimen/dp200"
+        android:layout_height="@dimen/dp200"
+        android:layout_centerInParent="true"
+        android:layout_margin="@dimen/dp40"
+        android:background="@color/background_primary"
+        >
+
+        <Button
+            android:id="@+id/bt_scroll_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scrollTo"
+            />
+
+        <Button
+            android:id="@+id/bt_scroll_by"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="scrollBy"
+            />
+
+    </com.example.administrator.mytestdemo.scroller.ScrollerLayout>
+
+    <Button
+        android:id="@+id/bt_normal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="toolbar和statusbar正常显示"/>
+
+    <Button
+        android:id="@+id/bt_hide_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏Toolbar"/>
+
+    <Button
+        android:id="@+id/bt_hide_toolbar_statusbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏Toolbar和statusbar"/>
+
+    <Button
+        android:id="@+id/bt_show_toolbar_to_statusbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示Toolbar，内容沉浸到statusbar"/>
+    <Button
+        android:id="@+id/bt_hide_toolbar_to_statusbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏Toolbar，内容沉浸到statusbar"/>
+</LinearLayout>
