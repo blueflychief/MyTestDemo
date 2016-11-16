@@ -34,12 +34,12 @@ import java.util.Map;
 /**
  * A logger is used to do the real logging work, can use multiple log printers to print the log.
  * <p>
- * A {@link Logger} is always generated and mostly accessed by {@link XLog}, but for customization
+ * A {@link Logger} is always generated and mostly accessed by {@link KLog}, but for customization
  * purpose, you can configure a {@link Logger} via the {@link Builder} which is returned by
- * {@link XLog} when you trying to start a customization using {@link XLog#tag(String)}
+ * {@link KLog} when you trying to start a customization using {@link KLog#tag(String)}
  * or other configuration method, and to use the customized {@link Logger}, you should call
  * the {@link Builder#build()} to build a {@link Logger}, and then you can log using
- * the {@link Logger} assuming that you are using the {@link XLog} directly.
+ * the {@link Logger} assuming that you are using the {@link KLog} directly.
  */
 public class Logger {
 
@@ -71,7 +71,7 @@ public class Logger {
      */
     /*package*/ Logger(Builder builder) {
         LogConfiguration.Builder logConfigBuilder = new LogConfiguration.Builder(
-                XLog.sLogConfiguration);
+                KLog.sLogConfiguration);
 
         if (builder.tag != null) {
             logConfigBuilder.tag(builder.tag);
@@ -125,7 +125,7 @@ public class Logger {
         if (builder.printer != null) {
             printer = builder.printer;
         } else {
-            printer = XLog.sPrinter;
+            printer = KLog.sPrinter;
         }
     }
 
@@ -370,7 +370,7 @@ public class Logger {
      * @param json the JSON string to log
      */
     public void json(String json) {
-        if (LogLevel.DEBUG < XLog.sLogLevel) {
+        if (LogLevel.DEBUG < KLog.sLogLevel) {
             return;
         }
         println(LogLevel.DEBUG, logConfiguration.jsonFormatter.format(json));
@@ -382,7 +382,7 @@ public class Logger {
      * @param xml the XML string to log
      */
     public void xml(String xml) {
-        if (LogLevel.DEBUG < XLog.sLogLevel) {
+        if (LogLevel.DEBUG < KLog.sLogLevel) {
             return;
         }
         println(LogLevel.DEBUG, logConfiguration.xmlFormatter.format(xml));
@@ -395,7 +395,7 @@ public class Logger {
      * @param object   the object to print
      */
     private <T> void println(int logLevel, T object) {
-        if (logLevel < XLog.sLogLevel) {
+        if (logLevel < KLog.sLogLevel) {
             return;
         }
         ObjectFormatter<? super T> objectFormatter = logConfiguration.getObjectFormatter(object);
@@ -413,7 +413,7 @@ public class Logger {
      * @param array    the array to print
      */
     private void println(int logLevel, Object[] array) {
-        if (logLevel < XLog.sLogLevel) {
+        if (logLevel < KLog.sLogLevel) {
             return;
         }
         printlnInternal(logLevel, Arrays.deepToString(array));
@@ -427,7 +427,7 @@ public class Logger {
      * @param args     the arguments of the printing log
      */
     private void println(int logLevel, String format, Object... args) {
-        if (logLevel < XLog.sLogLevel) {
+        if (logLevel < KLog.sLogLevel) {
             return;
         }
         printlnInternal(logLevel, formatArgs(format, args));
@@ -440,7 +440,7 @@ public class Logger {
      * @param msg      the message you would like to log
      */
     /*package*/ void println(int logLevel, String msg) {
-        if (logLevel < XLog.sLogLevel) {
+        if (logLevel < KLog.sLogLevel) {
             return;
         }
         printlnInternal(logLevel, msg);
@@ -454,7 +454,7 @@ public class Logger {
      * @param tr       an throwable object to log
      */
     private void println(int logLevel, String msg, Throwable tr) {
-        if (logLevel < XLog.sLogLevel) {
+        if (logLevel < KLog.sLogLevel) {
             return;
         }
         printlnInternal(logLevel, ((msg == null || msg.length() == 0)

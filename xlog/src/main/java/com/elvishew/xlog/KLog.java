@@ -25,8 +25,12 @@ import com.elvishew.xlog.formatter.message.throwable.ThrowableFormatter;
 import com.elvishew.xlog.formatter.message.xml.XmlFormatter;
 import com.elvishew.xlog.formatter.stacktrace.StackTraceFormatter;
 import com.elvishew.xlog.formatter.thread.ThreadFormatter;
+import com.elvishew.xlog.printer.AndroidPrinter;
 import com.elvishew.xlog.printer.Printer;
 import com.elvishew.xlog.printer.PrinterSet;
+import com.elvishew.xlog.printer.SystemPrinter;
+import com.elvishew.xlog.printer.file.FilePrinter;
+import com.elvishew.xlog.printer.file.naming.DateFileNameGenerator;
 import com.elvishew.xlog.util.StackTraceUtil;
 
 /**
@@ -39,9 +43,9 @@ import com.elvishew.xlog.util.StackTraceUtil;
  * <p>
  * <b>1. Initial the log system.</b>
  * <br>Using one of
- * <br>{@link XLog#init(int)},
- * <br>{@link XLog#init(int, LogConfiguration)}
- * <br>{@link XLog#init(int, LogConfiguration, Printer...)},
+ * <br>{@link KLog#init(int)},
+ * <br>{@link KLog#init(int, LogConfiguration)}
+ * <br>{@link KLog#init(int, LogConfiguration, Printer...)},
  * <br>that will setup a {@link LogConfiguration} for a global usage.
  * If you want to use a customized configuration instead of the global one to log something, you can
  * start a customization logging.
@@ -89,7 +93,7 @@ import com.elvishew.xlog.util.StackTraceUtil;
  * <br>Call the {@link Logger.Builder#build()} of the returned {@link Logger.Builder}.
  * <p>
  * <b>4. Start to log.</b>
- * <br>The logging methods of a {@link Logger} is completely same as that ones in {@link XLog}.
+ * <br>The logging methods of a {@link Logger} is completely same as that ones in {@link KLog}.
  * <br>As a convenience, you can ignore the step 3, just call the logging methods of
  * {@link Logger.Builder#build()}, it will automatically build a {@link Logger} and call the target
  * logging method.
@@ -110,10 +114,42 @@ import com.elvishew.xlog.util.StackTraceUtil;
  * <br>{@link Log#getStackTraceString(Throwable)}
  * <p>
  */
-public class XLog {
+public class KLog {
+
+    public static void initKLog(boolean isShowLog, String defaultTag) {
+        LogConfiguration config = new LogConfiguration.Builder()
+                .tag(defaultTag)                                         // 指定 TAG，默认为 "X-LOG"
+                .t()                                                   // 允许打印线程信息，默认禁止
+                .st(1)                                                 // 允许打印深度为2的调用栈信息，默认禁止
+                .b()                                                   // 允许打印日志边框，默认禁止
+//                .jsonFormatter(new MyJsonFormatter())                  // 指定 JSON 格式化器，默认为 DefaultJsonFormatter
+//                .xmlFormatter(new MyXmlFormatter())                    // 指定 XML 格式化器，默认为 DefaultXmlFormatter
+//                .throwableFormatter(new MyThrowableFormatter())        // 指定可抛出异常格式化器，默认为 DefaultThrowableFormatter
+//                .threadFormatter(new MyThreadFormatter())              // 指定线程信息格式化器，默认为 DefaultThreadFormatter
+//                .stackTraceFormatter(new MyStackTraceFormatter())      // 指定调用栈信息格式化器，默认为 DefaultStackTraceFormatter
+//                .borderFormatter(new MyBoardFormatter())               // 指定边框格式化器，默认为 DefaultBorderFormatter
+//                .addObjectFormatter(AnyClass.class,                    // 为指定类添加格式化器
+//                        new AnyClassObjectFormatter())                 // 默认使用 Object.toString()
+                .build();
+
+        Printer androidPrinter = new AndroidPrinter();             // 通过 android.util.Log 打印日志的打印器
+        Printer systemPrinter = new SystemPrinter();               // 通过 System.out.println 打印日志的打印器
+        Printer filePrinter = new FilePrinter                      // 打印日志到文件的打印器
+                .Builder("/sdcard/xlog/")                              // 指定保存日志文件的路径
+                .fileNameGenerator(new DateFileNameGenerator())        // 指定日志文件名生成器，默认为 ChangelessFileNameGenerator("log")
+//                .backupStrategy(new MyBackupStrategy())                // 指定日志文件备份策略，默认为 FileSizeBackupStrategy(1024 * 1024)
+//                .logFlattener(new MyLogFlattener())                    // 指定日志平铺器，默认为 DefaultLogFlattener
+                .build();
+
+        KLog.init(isShowLog ? LogLevel.ALL : LogLevel.NONE,                                    // 指定日志级别，低于该级别的日志将不会被打印
+                config,                                                // 指定日志配置，如果不指定，会默认使用 new LogConfiguration.Builder().build()
+                androidPrinter,                                        // 添加任意多的打印器。如果没有添加任何打印器，会默认使用 AndroidPrinter
+//                systemPrinter,
+                filePrinter);
+    }
 
     /**
-     * Global logger for all direct logging via {@link XLog}.
+     * Global logger for all direct logging via {@link KLog}.
      */
     private static Logger sLogger;
 
@@ -137,7 +173,7 @@ public class XLog {
     /**
      * Prevent instance.
      */
-    private XLog() {
+    private KLog() {
     }
 
     /**
@@ -179,7 +215,7 @@ public class XLog {
     public static void init(int logLevel, LogConfiguration logConfiguration, Printer... printers) {
         if (sIsInitialized) {
             throw new IllegalStateException(
-                    "XLog is already initialized, do not initialize again");
+                    "KLog is already initialized, do not initialize again");
         }
         sIsInitialized = true;
 
@@ -599,7 +635,7 @@ public class XLog {
     /**
      * Compatible class with {@link android.util.Log}.
      *
-     * @deprecated please use {@link XLog} instead
+     * @deprecated please use {@link KLog} instead
      */
     public static class Log {
 

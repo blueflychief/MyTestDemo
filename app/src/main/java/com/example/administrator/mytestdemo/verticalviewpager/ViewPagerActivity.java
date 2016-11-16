@@ -116,7 +116,7 @@ public class ViewPagerActivity extends AppCompatActivity {
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 3;
+            return 9;
         }
 
         @Override
@@ -129,6 +129,18 @@ public class ViewPagerActivity extends AppCompatActivity {
                     return "PAGE 2";
                 case 2:
                     return "PAGE 3";
+                case 3:
+                    return "PAGE 4";
+                case 4:
+                    return "PAGE 5";
+                case 5:
+                    return "PAGE 6";
+                case 6:
+                    return "PAGE 7";
+                case 7:
+                    return "PAGE 8";
+                case 8:
+                    return "PAGE 9";
             }
             return null;
         }

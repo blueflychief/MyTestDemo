@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 
 import com.example.administrator.mytestdemo.R;
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 
 import java.lang.ref.WeakReference;
 

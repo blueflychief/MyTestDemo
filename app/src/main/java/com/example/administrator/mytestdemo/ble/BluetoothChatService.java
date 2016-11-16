@@ -24,7 +24,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 
 /**
  * This class does all the work for setting up and managing Bluetooth

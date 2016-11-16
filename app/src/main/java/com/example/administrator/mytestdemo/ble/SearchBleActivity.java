@@ -29,7 +29,7 @@ import android.widget.ProgressBar;
 
 import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.ble.bean.UserInfoEntity;
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.util.ToastUtils;
 
 import java.util.ArrayList;

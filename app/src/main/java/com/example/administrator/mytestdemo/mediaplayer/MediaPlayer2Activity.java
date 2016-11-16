@@ -18,7 +18,7 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
 import com.example.administrator.mytestdemo.R;
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.util.ToastUtils;
 
 import java.io.IOException;

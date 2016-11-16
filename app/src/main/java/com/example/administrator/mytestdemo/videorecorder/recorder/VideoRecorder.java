@@ -8,7 +8,7 @@ import android.media.AudioRecord;
 import android.media.MediaRecorder;
 import android.text.TextUtils;
 
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.videorecorder.javacv.FFmpegFrameFilter;
 import com.example.administrator.mytestdemo.videorecorder.javacv.FFmpegFrameRecorder;
 import com.example.administrator.mytestdemo.videorecorder.javacv.Frame;

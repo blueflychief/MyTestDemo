@@ -36,7 +36,7 @@ import static com.elvishew.xlog.LogLevel.INFO;
 import static com.elvishew.xlog.LogLevel.VERBOSE;
 import static org.junit.Assert.assertTrue;
 
-public class XLogTest {
+public class KLogTest {
 
     private static final String MESSAGE = "message";
 
@@ -51,36 +51,36 @@ public class XLogTest {
     @Before
     public void setup() {
         XLogUtil.beforeTest();
-        XLog.init(VERBOSE,
+        KLog.init(VERBOSE,
                 new LogConfiguration.Builder().tag(DEFAULT_TAG).build(),
                 new ContainerPrinter(logsContainer));
     }
 
     @Test
     public void testSimpleLogging() {
-        XLog.i(MESSAGE);
+        KLog.i(MESSAGE);
         assertLog(INFO, DEFAULT_TAG, MESSAGE);
     }
 
     @Test
     public void testTag() {
-        XLog.i(MESSAGE);
+        KLog.i(MESSAGE);
         assertLog(INFO, DEFAULT_TAG, MESSAGE);
 
         logsContainer.clear();
-        XLog.tag(CUSTOM_TAG).i(MESSAGE);
+        KLog.tag(CUSTOM_TAG).i(MESSAGE);
         assertLog(INFO, CUSTOM_TAG, MESSAGE);
     }
 
     @Test
     public void testThread() {
-        XLog.t().t().i("Message with thread info");
+        KLog.t().t().i("Message with thread info");
         boolean result = (logsContainer.size() == 1
                 && logsContainer.get(0).msg.contains("Thread: "));
         assertTrue("No thread info found", result);
 
         logsContainer.clear();
-        XLog.t().nt().i("Message without thread info");
+        KLog.t().nt().i("Message without thread info");
         result = (logsContainer.size() == 1
                 && !logsContainer.get(0).msg.contains("Thread: "));
         assertTrue("Thread info found", result);
@@ -88,19 +88,19 @@ public class XLogTest {
 
     @Test
     public void testStackTrace() {
-        XLog.st(1).i("Message with stack trace, depth 1");
+        KLog.st(1).i("Message with stack trace, depth 1");
         boolean result = (logsContainer.size() == 1
                 && logsContainer.get(0).msg.contains("\t─ "));
         assertTrue("No stack trace found", result);
 
         logsContainer.clear();
-        XLog.st(2).i("Message with stack trace, depth 2");
+        KLog.st(2).i("Message with stack trace, depth 2");
         result = (logsContainer.size() == 1
                 && logsContainer.get(0).msg.contains("\t├ "));
         assertTrue("No stack trace found", result);
 
         logsContainer.clear();
-        XLog.nst().i("Message without stack trace");
+        KLog.nst().i("Message without stack trace");
         result = (logsContainer.size() == 1
                 && !logsContainer.get(0).msg.contains("\t├ "));
         assertTrue("Stack trace found", result);
@@ -108,14 +108,14 @@ public class XLogTest {
 
     @Test
     public void testBorder() {
-        XLog.b().i("Message with a border");
+        KLog.b().i("Message with a border");
         boolean result = (logsContainer.size() == 1
                 && logsContainer.get(0).msg.startsWith("╔═══")
                 && logsContainer.get(0).msg.endsWith("════"));
         assertTrue("No bordered log found", result);
 
         logsContainer.clear();
-        XLog.nb().i("Message without a border");
+        KLog.nb().i("Message without a border");
         result = (logsContainer.size() == 1
                 && !logsContainer.get(0).msg.startsWith("╔═══")
                 && !logsContainer.get(0).msg.endsWith("════"));
@@ -125,7 +125,7 @@ public class XLogTest {
     @Test
     public void testObject() {
         Date date = new Date();
-        XLog.addObjectFormatter(Date.class, new ObjectFormatter<Date>() {
+        KLog.addObjectFormatter(Date.class, new ObjectFormatter<Date>() {
             @Override
             public String format(Date date) {
                 return Long.toString(date.getTime());
@@ -138,7 +138,7 @@ public class XLogTest {
 
     @Test
     public void testCustomJsonFormatter() {
-        XLog.jsonFormatter(
+        KLog.jsonFormatter(
                 new JsonFormatter() {
 
                     @Override
@@ -152,7 +152,7 @@ public class XLogTest {
 
     @Test
     public void testCustomXmlFormatter() {
-        XLog.xmlFormatter(
+        KLog.xmlFormatter(
                 new XmlFormatter() {
 
                     @Override
@@ -167,7 +167,7 @@ public class XLogTest {
     @Test
     public void testCustomThrowableFormatter() {
         final String formattedThrowable = "This is a throwable";
-        XLog.throwableFormatter(
+        KLog.throwableFormatter(
                 new ThrowableFormatter() {
                     @Override
                     public String format(Throwable data) {
@@ -181,7 +181,7 @@ public class XLogTest {
     @Test
     public void testCustomThreadFormatter() {
         final String formattedThread = "This is the thread info";
-        XLog.threadFormatter(
+        KLog.threadFormatter(
                 new ThreadFormatter() {
                     @Override
                     public String format(Thread data) {
@@ -196,7 +196,7 @@ public class XLogTest {
     @Test
     public void testCustomStackTraceFormatter() {
         final String formattedStackTrace = "This is the stack trace";
-        XLog.stackTraceFormatter(
+        KLog.stackTraceFormatter(
                 new StackTraceFormatter() {
                     @Override
                     public String format(StackTraceElement[] data) {
@@ -210,7 +210,7 @@ public class XLogTest {
 
     @Test
     public void testCustomBorderFormatter() {
-        XLog.t().threadFormatter(new ThreadFormatter() {
+        KLog.t().threadFormatter(new ThreadFormatter() {
             @Override
             public String format(Thread data) {
                 return "T1";
@@ -255,7 +255,7 @@ public class XLogTest {
 
     @Test
     public void testCustomPrinter() {
-        XLog.printers(
+        KLog.printers(
                 new ContainerPrinter(logsContainer) {
 
                     @Override

@@ -9,7 +9,7 @@ import android.view.View;
 import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.premission.yzjpermission.AndPermission;
 import com.example.administrator.mytestdemo.premission.yzjpermission.PermissionListener;
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.util.ToastUtils;
 
 public class YzjPermissionActivity extends AppCompatActivity implements PermissionListener {

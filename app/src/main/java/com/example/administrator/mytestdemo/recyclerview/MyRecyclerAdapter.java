@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.administrator.mytestdemo.R;
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.widge.recycler.CustomRefreshAdapter;
 import com.example.administrator.mytestdemo.widge.recycler.CustomRefreshRecycleView;
 

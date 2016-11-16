@@ -7,7 +7,7 @@ import com.alibaba.fastjson.JSON;
 import com.example.administrator.mytestdemo.BaseActivity;
 import com.example.administrator.mytestdemo.nohttp.CallServer;
 import com.example.administrator.mytestdemo.nohttp.HttpListener;
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.widge.CustomDialog;
 import com.yolanda.nohttp.NoHttp;
 import com.yolanda.nohttp.RequestMethod;

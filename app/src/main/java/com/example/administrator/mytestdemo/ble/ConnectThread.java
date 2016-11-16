@@ -4,7 +4,7 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 
-import com.example.administrator.mytestdemo.util.KLog;
+import com.elvishew.xlog.KLog;
 
 import java.io.IOException;
 

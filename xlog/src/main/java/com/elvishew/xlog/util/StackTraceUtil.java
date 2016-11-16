@@ -16,7 +16,8 @@
 
 package com.elvishew.xlog.util;
 
-import com.elvishew.xlog.XLog;
+
+import com.elvishew.xlog.KLog;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -30,7 +31,7 @@ public class StackTraceUtil {
     private static final String XLOG_CLASS_PREFIX;
 
     static {
-        String xlogClassName = XLog.class.getName();
+        String xlogClassName = KLog.class.getName();
         XLOG_CLASS_PREFIX = xlogClassName.substring(0, xlogClassName.lastIndexOf('.') + 1);
     }
 

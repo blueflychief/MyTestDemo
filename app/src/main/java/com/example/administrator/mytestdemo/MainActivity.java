@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.elvishew.xlog.XLog;
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
@@ -29,7 +29,6 @@ import com.example.administrator.mytestdemo.superrecycler.SuperRecyclerActivity;
 import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
-import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
 
@@ -97,7 +96,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        XLog.i(TestData.testJson);
+        KLog.i(TestData.testJson);
         switch (view.getId()) {
             case R.id.bt_alipay:
                 startActivity(new Intent(this, PayDemoActivity.class));

@@ -13,9 +13,9 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.widget.RemoteViews;
 
+import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.MyApplication;
 import com.example.administrator.mytestdemo.R;
-import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.util.PreferencesUtils;
 
 import java.io.File;
