@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.elvishew.xlog.XLog;
 import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
@@ -47,6 +48,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_wifi;
     private Button bt_superrecycler;
     private ImageView imageView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,6 +97,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
+        XLog.i(TestData.testJson);
         switch (view.getId()) {
             case R.id.bt_alipay:
                 startActivity(new Intent(this, PayDemoActivity.class));
