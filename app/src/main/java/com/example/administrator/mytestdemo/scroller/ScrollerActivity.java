@@ -1,14 +1,17 @@
 package com.example.administrator.mytestdemo.scroller;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.administrator.mytestdemo.R;
@@ -53,6 +56,12 @@ public class ScrollerActivity extends AppCompatActivity implements View.OnClickL
         bt_show_toolbar_to_statusbar.setOnClickListener(this);
         bt_hide_toolbar_to_statusbar.setOnClickListener(this);
         bt_normal.setOnClickListener(this);
+
+        ImageView imageView = new ImageView(this);
+        Drawable icon = getResources().getDrawable(R.drawable.ic_test_1);
+        Drawable tintIcon = DrawableCompat.wrap(icon);
+        DrawableCompat.setTintList(tintIcon, getResources().getColorStateList(R.color.white));
+        imageView.setImageDrawable(tintIcon);
     }
 
     /**
