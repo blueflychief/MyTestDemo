@@ -195,6 +195,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         super.onResume();
         ColorDrawable drawable = new ColorDrawable(0x55ffFF00);
         imageView.setImageDrawable(drawable);
+
     }
 
     @Override
