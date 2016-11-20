@@ -31,6 +31,9 @@ import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
+import com.example.database.UserModel;
+import com.example.database.UserModel_Table;
+import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.io.File;
 
@@ -47,7 +50,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_wifi;
     private Button bt_superrecycler;
     private ImageView imageView;
-
 
 
     @Override
@@ -195,6 +197,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         super.onResume();
         ColorDrawable drawable = new ColorDrawable(0x55ffFF00);
         imageView.setImageDrawable(drawable);
+        SQLite.select().from(UserModel.class).where(UserModel_Table.name.eq("s"));
 
     }
 
