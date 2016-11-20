@@ -32,10 +32,12 @@ import com.example.administrator.mytestdemo.util.INetworkStatus;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
 import com.example.database.UserModel;
-import com.example.database.UserModel_Table;
+import com.raizlabs.android.dbflow.config.FlowManager;
 import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.io.File;
+import java.util.Iterator;
+import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, INetworkStatus {
     private Button bt_alipay;
@@ -98,7 +100,20 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     @Override
     public void onClick(View view) {
-        KLog.i(TestData.testJson);
+        UserModel mode;
+        for (int i = 0; i < 20; i++) {
+            mode=new UserModel();
+            mode.name="zhangsan5_".concat(String.valueOf(i + 1));
+            mode.sex=i % 2;
+            FlowManager.getModelAdapter(UserModel.class).insert(mode);
+        }
+        List<UserModel> users = SQLite.select().from(UserModel.class).queryList();
+
+        Iterator<UserModel> i = users.iterator();
+        while (i.hasNext()) {
+            KLog.i("-----:" + i.next().toString());
+        }
+
         switch (view.getId()) {
             case R.id.bt_alipay:
                 startActivity(new Intent(this, PayDemoActivity.class));
@@ -197,7 +212,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         super.onResume();
         ColorDrawable drawable = new ColorDrawable(0x55ffFF00);
         imageView.setImageDrawable(drawable);
-        SQLite.select().from(UserModel.class).where(UserModel_Table.name.eq("s"));
+
 
     }
 

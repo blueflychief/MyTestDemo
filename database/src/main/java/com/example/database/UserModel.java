@@ -14,14 +14,25 @@ import com.raizlabs.android.dbflow.structure.BaseModel;
 @ModelContainer
 @Table(database = DBFlowDatabase.class)
 public class UserModel extends BaseModel {
+
     //自增ID
     @Column
     @Unique
     @PrimaryKey(autoincrement = true)
     public Long id;
+
     @Column
-    @Unique
     public String name;
+
     @Column
     public int sex;
+
+    @Override
+    public String toString() {
+        return "UserModel{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", sex=" + sex +
+                '}';
+    }
 }
