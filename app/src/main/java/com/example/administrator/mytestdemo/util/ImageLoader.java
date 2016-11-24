@@ -7,7 +7,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.elvishew.xlog.KLog;
 
 public class ImageLoader {
 

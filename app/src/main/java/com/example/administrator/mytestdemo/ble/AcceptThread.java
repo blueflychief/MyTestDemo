@@ -3,8 +3,7 @@ package com.example.administrator.mytestdemo.ble;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 
 import java.io.IOException;
 

@@ -4,9 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MyTestDemo.iml" filepath="$PROJECT_DIR$/MyTestDemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ble/ble.iml" filepath="$PROJECT_DIR$/ble/ble.iml" />
       <module fileurl="file://$PROJECT_DIR$/database/database.iml" filepath="$PROJECT_DIR$/database/database.iml" />
       <module fileurl="file://$PROJECT_DIR$/myjavatestdemos/myjavatestdemos.iml" filepath="$PROJECT_DIR$/myjavatestdemos/myjavatestdemos.iml" />
       <module fileurl="file://$PROJECT_DIR$/superlibrary/superlibrary.iml" filepath="$PROJECT_DIR$/superlibrary/superlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tools/tools.iml" filepath="$PROJECT_DIR$/tools/tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/xlog/xlog.iml" filepath="$PROJECT_DIR$/xlog/xlog.iml" />
     </modules>
   </component>

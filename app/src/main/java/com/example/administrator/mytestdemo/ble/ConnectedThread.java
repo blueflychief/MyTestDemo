@@ -2,8 +2,7 @@ package com.example.administrator.mytestdemo.ble;
 
 import android.bluetooth.BluetoothSocket;
 import android.os.Handler;
-
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 
 import java.io.IOException;
 import java.io.InputStream;

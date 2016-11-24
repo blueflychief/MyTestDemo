@@ -5,7 +5,7 @@ import android.text.TextUtils;
 
 import com.example.administrator.mytestdemo.ble.bean.ClockVo;
 import com.example.administrator.mytestdemo.ble.bean.UserInfoEntity;
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

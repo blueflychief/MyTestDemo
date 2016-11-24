@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin">
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="@dimen/activity_vertical_margin"
+                android:paddingLeft="@dimen/activity_horizontal_margin"
+                android:paddingRight="@dimen/activity_horizontal_margin"
+                android:paddingTop="@dimen/activity_vertical_margin">
 
     <com.example.administrator.mytestdemo.widge.ExpandTextView
         android:id="@+id/expand_view"
@@ -15,7 +15,7 @@
         android:text="7月24日中午12时许，专案组先派出两名侦查员化妆成湖南收购废品的小贩接近嫌疑人落脚点，掌控主动，另外两名民警守住重要出口，其他人形成围拢之势，伺机而动。随着指挥长一声令下，民警以迅雷不及掩耳之势在制枪窝点一举将犯罪嫌疑人刘某成功抓获。当场查获各类子弹、炮弹样品数枚，快递运单128张、运输车辆2台、多张银行卡、转帐凭证、大量枪支零部件和制造枪支工具等物证。现场给人感觉简直就是一个小型“兵工厂”。看着满屋子的枪支弹药，现场民警们"
         android:textColor="#666666"
         android:textSize="16sp"
-        app:maxCollapsedLines="4" />
+        app:maxCollapsedLines="4"/>
 
     <TextView
         android:id="@+id/tv_switch"
@@ -24,7 +24,7 @@
         android:layout_below="@+id/expand_view"
         android:padding="10dp"
         android:text="展开"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/colorPrimary"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/colorAccent"
-                app:orientation="horizontal" />
+                app:orientation="horizontal"/>
 
             <com.example.administrator.mytestdemo.widge.TextViewExpandableAnimation
                 android:id="@+id/tv_expand_text"
@@ -54,63 +54,53 @@
                 app:tvea_textContentSize="@dimen/sp_txt_size_content"
                 app:tvea_textExpand="@string/expand"
                 app:tvea_textShrink="@string/shrink"
-                app:tvea_textStateColor="@color/colorPrimary" />
+                app:tvea_textStateColor="@color/colorPrimary"/>
 
-            <TextView
+            <com.example.administrator.mytestdemo.widge.MutiProgress
+                android:id="@+id/mp_1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
+                android:layout_height="100dp"
+                app:currNodeNO="2"
+                app:currNodeState="1"
+                app:nodeRadius="10dp"
+                app:nodesNum="4"
+                app:processingLineColor="#7B68EE"
+                app:progresFailDrawable="@drawable/ic_close_white_18dp"
+                app:progresSuccDrawable="@drawable/ic_page_indicator"
+                app:progressingDrawable="@drawable/ic_page_indicator_focused"
+                app:unprogressingDrawable="@drawable/ic_scale_white_18dp"/>
 
-            <TextView
+            <com.example.administrator.mytestdemo.widge.MutiProgress
+                android:id="@+id/mp_2"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
+                android:layout_height="30dp"
+                android:layout_below="@+id/mp_1"
+                android:layout_marginTop="20dp"
+                app:currNodeNO="6"
+                app:currNodeState="1"
+                app:nodeRadius="6dp"
+                app:nodesNum="10"
+                app:processingLineColor="#7B68EE"
+                app:progresFailDrawable="@drawable/ic_close_white_18dp"
+                app:progresSuccDrawable="@drawable/ic_page_indicator"
+                app:progressingDrawable="@drawable/ic_page_indicator_focused"
+                app:unprogressingDrawable="@drawable/ic_scale_white_18dp"/>
 
-            <TextView
+            <com.example.administrator.mytestdemo.widge.MutiProgress
+                android:id="@+id/mp_3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="设立收到了反馈说多了"
-                android:textSize="18sp" />
+                android:layout_height="50dp"
+                android:layout_below="@+id/mp_2"
+                android:layout_marginTop="20dp"
+                app:currNodeNO="10"
+                app:currNodeState="0"
+                app:nodeRadius="4dp"
+                app:nodesNum="15"
+                app:processingLineColor="#FF00FF"
+                app:progresFailDrawable="@drawable/ic_close_white_18dp"
+                app:progresSuccDrawable="@drawable/ic_page_indicator"
+                app:progressingDrawable="@drawable/ic_page_indicator_focused"
+                app:unprogressingDrawable="@drawable/ic_scale_white_18dp"/>
 
 
         </LinearLayout>

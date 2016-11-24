@@ -1,1 +1,1 @@
-include ':app', ':myjavatestdemos', ':database', 'superlibrary', 'xlog'
+include ':app', ':myjavatestdemos', ':database', ':ble', ':tools', 'superlibrary'

@@ -6,7 +6,6 @@ import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 
-import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.MyApplication;
 
 import java.io.BufferedReader;

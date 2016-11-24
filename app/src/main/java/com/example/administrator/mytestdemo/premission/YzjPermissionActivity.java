@@ -1,15 +1,14 @@
 package com.example.administrator.mytestdemo.premission;
 
 import android.Manifest;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 
 import com.example.administrator.mytestdemo.R;
 import com.example.administrator.mytestdemo.premission.yzjpermission.AndPermission;
 import com.example.administrator.mytestdemo.premission.yzjpermission.PermissionListener;
-import com.elvishew.xlog.KLog;
 import com.example.administrator.mytestdemo.util.ToastUtils;
 
 public class YzjPermissionActivity extends AppCompatActivity implements PermissionListener {

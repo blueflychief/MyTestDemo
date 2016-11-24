@@ -1,42 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="ExpandTextView">
-        <attr name="maxCollapsedLines" format="integer" />
-        <attr name="animDuration" format="integer" />
-        <attr name="animAlphaStart" format="float" />
-        <attr name="expandDrawable" format="reference" />
-        <attr name="collapseDrawable" format="reference" />
+        <attr name="maxCollapsedLines" format="integer"/>
+        <attr name="animDuration" format="integer"/>
+        <attr name="animAlphaStart" format="float"/>
+        <attr name="expandDrawable" format="reference"/>
+        <attr name="collapseDrawable" format="reference"/>
     </declare-styleable>
 
 
     <declare-styleable name="DotIndicatorView">
-        <attr name="dot_number" format="integer" />
-        <attr name="dot_current" format="integer" />
-        <attr name="dot_normal_radius" format="integer" />
-        <attr name="dot_select_radius" format="integer" />
-        <attr name="dot_margin" format="integer" />
-        <attr name="dot_select_color" format="color" />
-        <attr name="dot_normol_color" format="color" />
+        <attr name="dot_number" format="integer"/>
+        <attr name="dot_current" format="integer"/>
+        <attr name="dot_normal_radius" format="integer"/>
+        <attr name="dot_select_radius" format="integer"/>
+        <attr name="dot_margin" format="integer"/>
+        <attr name="dot_select_color" format="color"/>
+        <attr name="dot_normol_color" format="color"/>
         <attr name="orientation">
-            <enum name="horizontal" value="1" />
-            <enum name="vertical" value="2" />
+            <enum name="horizontal" value="1"/>
+            <enum name="vertical" value="2"/>
         </attr>
     </declare-styleable>
 
     <declare-styleable name="CameraPreviewView">
-        <attr name="cpv_focusDrawable" format="reference" />
-        <attr name="cpv_indicatorDrawable" format="reference" />
+        <attr name="cpv_focusDrawable" format="reference"/>
+        <attr name="cpv_indicatorDrawable" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="TextViewExpandableAnimation">
-        <attr name="tvea_expandLines" format="integer" />
-        <attr name="tvea_shrinkBitmap" format="reference" />
-        <attr name="tvea_expandBitmap" format="reference" />
-        <attr name="tvea_textStateColor" format="color" />
-        <attr name="tvea_textContentColor" format="color" />
-        <attr name="tvea_textContentSize" format="dimension" />
-        <attr name="tvea_textShrink" format="string" />
-        <attr name="tvea_textExpand" format="string" />
+        <attr name="tvea_expandLines" format="integer"/>
+        <attr name="tvea_shrinkBitmap" format="reference"/>
+        <attr name="tvea_expandBitmap" format="reference"/>
+        <attr name="tvea_textStateColor" format="color"/>
+        <attr name="tvea_textContentColor" format="color"/>
+        <attr name="tvea_textContentSize" format="dimension"/>
+        <attr name="tvea_textShrink" format="string"/>
+        <attr name="tvea_textExpand" format="string"/>
 
     </declare-styleable>
+
+    <declare-styleable name="MutiProgress">
+        <attr name="nodesNum" format="integer"/> <!-- 节点数量 -->
+        <attr name="nodeRadius" format="dimension"/>
+        <attr name="progressingDrawable" format="reference"/>
+        <attr name="unprogressingDrawable" format="reference"/>  <!-- 未完成的节点图标 -->
+        <attr name="progresFailDrawable" format="reference"/>
+        <attr name="progresSuccDrawable" format="reference"/>
+
+        <attr name="processingLineColor" format="color"/>
+        <attr name="currNodeNO" format="integer"/>   <!-- 当前所到达的节点编号  0开始计算-->
+        <attr name="currNodeState" format="integer"/>   <!-- 当前所到达的节点状态，0：失败  1：成功 -->
+    </declare-styleable>
+
 </resources>

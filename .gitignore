@@ -6,3 +6,14 @@
 .DS_Store
 /build
 /captures
+.idea
+app/build
+ble/build
+database/build
+gradle
+myjavatestdemos/build
+superlibrary/build
+tools/build
+gradlew.bat
+gradle.properties
+gen

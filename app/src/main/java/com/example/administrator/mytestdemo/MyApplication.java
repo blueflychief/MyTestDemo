@@ -2,7 +2,7 @@ package com.example.administrator.mytestdemo;
 
 import android.app.Application;
 
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.util.PreferencesUtils;
 import com.example.administrator.mytestdemo.util.ToastUtils;
 import com.raizlabs.android.dbflow.config.FlowConfig;
@@ -17,7 +17,7 @@ public class MyApplication extends Application {
         super.onCreate();
         INSTANCE = this;
 //        KLog.init(true, "klog");
-        KLog.initKLog(true, "test_demo");
+        KLog.init(true, "test_demo");
         ToastUtils.init(this);
         PreferencesUtils.init(this);
         NoHttp.initialize(this);

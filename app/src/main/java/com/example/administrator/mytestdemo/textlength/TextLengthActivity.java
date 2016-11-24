@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.administrator.mytestdemo.R;
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

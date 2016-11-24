@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.widge.DotIndicatorView;
 import com.example.administrator.mytestdemo.widge.ExpandTextView;
 import com.example.administrator.mytestdemo.widge.TextViewExpandableAnimation;

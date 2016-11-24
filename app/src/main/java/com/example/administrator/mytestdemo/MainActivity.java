@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.elvishew.xlog.KLog;
+import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
 import com.example.administrator.mytestdemo.ble.SearchBleActivity;
