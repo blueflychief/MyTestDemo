@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+
+    <TextView
+        android:id="@+id/tvLabel1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        />
+
+    <com.example.administrator.mytestdemo.stringbuilder.BadgeTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="saddfsmdfms"
+        android:textSize="40sp"
+        app:badge_color="#20A6EF"
+        app:badge_count="65"
+        app:badge_none_show="true"
+        app:badge_padding_right="20dp"
+        app:badge_padding_top="20dp"
+        />
+
+    <Button
+        android:id="@+id/btChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="改变文字"
+        />
+
+    <com.example.administrator.mytestdemo.stringbuilder.BadgeView
+        android:id="@+id/bvText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp20"
+        android:background="#33f00fff"
+        app:text="1"
+        app:textColor="#000000"
+        app:textSize="50sp"/>
+
+
+</LinearLayout>

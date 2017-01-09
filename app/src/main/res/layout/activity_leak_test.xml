@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 xmlns:app="http://schemas.android.com/apk/res-auto"
+
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:paddingBottom="@dimen/activity_vertical_margin"
@@ -12,7 +13,7 @@
         android:id="@+id/expand_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="7月24日中午12时许，专案组先派出两名侦查员化妆成湖南收购废品的小贩接近嫌疑人落脚点，掌控主动，另外两名民警守住重要出口，其他人形成围拢之势，伺机而动。随着指挥长一声令下，民警以迅雷不及掩耳之势在制枪窝点一举将犯罪嫌疑人刘某成功抓获。当场查获各类子弹、炮弹样品数枚，快递运单128张、运输车辆2台、多张银行卡、转帐凭证、大量枪支零部件和制造枪支工具等物证。现场给人感觉简直就是一个小型“兵工厂”。看着满屋子的枪支弹药，现场民警们"
+        android:text="7月24日中午12时许，专案组先派出两名侦查员化妆成湖南收购废品的小贩接近嫌疑人落脚点，掌控主动，另外两名民警守住重要出口，其他人形成围拢之势，伺机而动。随着指挥长一声令下，民警以迅雷不及掩耳之势在制枪窝点一举将犯罪嫌疑人刘某成功抓获。当场查获各类子弹、炮弹样品数枚，快递运单128张、运输车辆2台、多张银行卡、转帐凭证、大量枪支零部件和制造枪支工具等物证。现场给人感觉简直就是一个小型“兵工厂”。看着满屋子的枪支弹药，现场民警们子的枪支弹药，现场民"
         android:textColor="#666666"
         android:textSize="16sp"
         app:maxCollapsedLines="4"/>

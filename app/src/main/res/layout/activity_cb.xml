@@ -6,12 +6,23 @@
     <com.example.administrator.mytestdemo.carousel.cb.ConvenientBanner
         android:id="@+id/convenientBanner"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:visibility="gone"/>
 
     <com.example.administrator.mytestdemo.widge.kenburnsview.KenBurnsView
         android:id="@+id/KenBurnsView"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:fitsSystemWindows="true"/>
+        android:fitsSystemWindows="true"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/ivBlur"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_blur1"
+        />
 
 </LinearLayout>

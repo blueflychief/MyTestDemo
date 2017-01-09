@@ -138,6 +138,14 @@
         </activity>
         <activity android:name=".scroller.ScrollerActivity">
         </activity>
+        <activity android:name=".ViewStubActivity">
+        </activity>
+        <activity android:name=".media.CropActivity">
+        </activity>
+        <activity android:name=".tinker.TinkerActivity">
+        </activity>
+        <activity android:name=".stringbuilder.SpannableStringBuilderActivity">
+        </activity>
     </application>
 
 </manifest>

@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:csb="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <Button
                 android:id="@+id/bt_alipay"
@@ -121,57 +123,93 @@
                 android:id="@+id/bt_permission"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="运行时权限"/>
 
             <Button
                 android:id="@+id/bt_yzjpermission"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="YZJ运行时权限"/>
 
             <Button
                 android:id="@+id/bt_mediaplayer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="mediaplayer"/>
 
             <Button
                 android:id="@+id/bt_customview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="自定义View"/>
 
             <Button
                 android:id="@+id/bt_ppw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="popwindow"/>
 
             <Button
                 android:id="@+id/bt_flow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="流式标签"/>
 
             <Button
                 android:id="@+id/bt_matrix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="matrix"/>
 
             <Button
                 android:id="@+id/bt_scroller"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/bt_update"
                 android:text="scroller"/>
+
+            <Button
+                android:id="@+id/btViewStub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ViewStub"/>
+
+            <Button
+                android:id="@+id/btPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="拍照和裁剪图片"/>
+
+            <Button
+                android:id="@+id/btTinker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tinker"/>
+
+
+            <LinearLayout
+                android:id="@+id/llScButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.example.administrator.mytestdemo.widge.CustomSwitchButton
+                    android:id="@+id/csButton"
+                    android:layout_width="@dimen/dp40"
+                    android:layout_height="@dimen/dp20"
+                    />
+            </LinearLayout>
+
+            <com.example.administrator.mytestdemo.widge.SwitchButton
+                android:layout_width="@dimen/dp100"
+                android:layout_height="@dimen/dp60"/>
+
+            <Button
+                android:id="@+id/btSb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SpannableStringBuilder"
+                />
+
         </LinearLayout>
     </LinearLayout>
 

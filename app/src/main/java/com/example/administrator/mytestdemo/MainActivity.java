@@ -9,6 +9,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.example.administrator.mytestdemo.media.CropActivity;
+import com.example.administrator.mytestdemo.stringbuilder.SpannableStringBuilderActivity;
+import com.example.administrator.mytestdemo.tinker.TinkerActivity;
 import com.example.administrator.mytestdemo.util.KLog;
 import com.example.administrator.mytestdemo.alipay.PayDemoActivity;
 import com.example.administrator.mytestdemo.appupdate.CheckUpdateActivity;
@@ -29,15 +32,13 @@ import com.example.administrator.mytestdemo.superrecycler.SuperRecyclerActivity;
 import com.example.administrator.mytestdemo.textlength.TextLengthActivity;
 import com.example.administrator.mytestdemo.util.DrawableUtil;
 import com.example.administrator.mytestdemo.util.INetworkStatus;
+import com.example.administrator.mytestdemo.util.ToastUtils;
 import com.example.administrator.mytestdemo.videorecorder.NewRecordVideoActivity;
 import com.example.administrator.mytestdemo.wifi.WifiTestActivity;
 import com.example.database.UserModel;
 import com.raizlabs.android.dbflow.config.FlowManager;
-import com.raizlabs.android.dbflow.sql.language.SQLite;
 
 import java.io.File;
-import java.util.Iterator;
-import java.util.List;
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, INetworkStatus {
     private Button bt_alipay;
@@ -51,6 +52,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     private Button bt_string;
     private Button bt_wifi;
     private Button bt_superrecycler;
+    private Button btSb;
     private ImageView imageView;
 
 
@@ -71,6 +73,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_ble = (Button) findViewById(R.id.bt_ble);
         bt_cb = (Button) findViewById(R.id.bt_cb);
         bt_superrecycler = (Button) findViewById(R.id.bt_superrecycler);
+        btSb = (Button) findViewById(R.id.btSb);
         bt_alipay.setOnClickListener(this);
         bt_leak.setOnClickListener(this);
         bt_compress.setOnClickListener(this);
@@ -80,6 +83,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         bt_cb.setOnClickListener(this);
         bt_recycler.setOnClickListener(this);
         bt_superrecycler.setOnClickListener(this);
+        btSb.setOnClickListener(this);
         findViewById(R.id.bt_stickview).setOnClickListener(this);
         findViewById(R.id.bt_photo_filter).setOnClickListener(this);
         findViewById(R.id.bt_wifi).setOnClickListener(this);
@@ -92,6 +96,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         findViewById(R.id.bt_flow).setOnClickListener(this);
         findViewById(R.id.bt_matrix).setOnClickListener(this);
         findViewById(R.id.bt_scroller).setOnClickListener(this);
+        findViewById(R.id.btViewStub).setOnClickListener(this);
+        findViewById(R.id.btPicture).setOnClickListener(this);
+        findViewById(R.id.btTinker).setOnClickListener(this);
+        findViewById(R.id.llScButton).setOnClickListener(this);
+//        findViewById(R.id.csButton).setOnClickListener(this);
         bt_string.setOnClickListener(this);
         setNetworkStatusChangeListener(this);
 
@@ -102,18 +111,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public void onClick(View view) {
         UserModel mode;
         for (int i = 0; i < 20; i++) {
-            mode=new UserModel();
-            mode.name="zhangsan5_".concat(String.valueOf(i + 1));
-            mode.sex=i % 2;
+            mode = new UserModel();
+            mode.name = "zhangsan5_".concat(String.valueOf(i + 1));
+            mode.sex = i % 2;
             FlowManager.getModelAdapter(UserModel.class).insert(mode);
         }
-        List<UserModel> users = SQLite.select().from(UserModel.class).queryList();
-
-        Iterator<UserModel> i = users.iterator();
-        while (i.hasNext()) {
-            KLog.i("-----:" + i.next().toString());
-        }
-
         switch (view.getId()) {
             case R.id.bt_alipay:
                 startActivity(new Intent(this, PayDemoActivity.class));
@@ -202,6 +204,24 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 break;
             case R.id.bt_scroller:
                 startActivity(new Intent(MainActivity.this, ScrollerActivity.class));
+                break;
+            case R.id.btViewStub:
+                startActivity(new Intent(MainActivity.this, ViewStubActivity.class));
+                break;
+            case R.id.btPicture:
+                startActivity(new Intent(this, CropActivity.class));
+                break;
+            case R.id.btTinker:
+                startActivity(new Intent(this, TinkerActivity.class));
+                break;
+            case R.id.csButton:
+                ToastUtils.showToast("switchButton");
+                break;
+            case R.id.llScButton:
+                ToastUtils.showToast("llScButton");
+                break;
+            case R.id.btSb:
+                startActivity(new Intent(this, SpannableStringBuilderActivity.class));
                 break;
         }
     }

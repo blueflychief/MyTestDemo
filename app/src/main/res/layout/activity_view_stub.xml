@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/btLoadView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载布局1"
+        />
+
+    <Button
+        android:id="@+id/btLoadView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="加载布局2"
+        />
+
+    <ViewStub
+        android:id="@+id/vs1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout="@layout/activity_checkupdate"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <ViewStub
+            android:id="@+id/vs2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout="@layout/activity_flow_tag"/>
+    </FrameLayout>
+</LinearLayout>
